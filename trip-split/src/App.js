@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 
 import { Route } from 'react-router-dom';
@@ -10,9 +10,11 @@ import Home from './components/home/Home.js';
 
 function App() {
 
+  const [currentUser, setCurrentUser] = useState('');
+  console.log('currentUser: ', currentUser);
   return (
     <>
-    <Route path='/' component={Home}/>
+    <Route path='/' render={props => <Home {...props} setCurrentUser={setCurrentUser} /> } />
     {/* <Route path='/trips' component={} />
     <Route path='/people' component={} />
     <Route path='/transactions' component={} />

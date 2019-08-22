@@ -15,16 +15,20 @@ const BackButton = styled.button`
     width: 195px;
 `;
 
-const LogInForm = ({ errors, touched, values, status }) => {
-  // useEffect(() => {
-  //     axios.get('https://tripsplitr.herokuapp.com/users')
-  //         .then(res => {
-  //             console.log('res: ', res);
-  //         })
-  //         .catch(err => {
-  //             alert(err);
-  //         })
-  // }, []);
+const LogInForm = ({ errors, touched, values, status, setCurrentUser }) => {
+  useEffect(() => {
+      if(status) {
+        setCurrentUser(status);
+        // axios.get(`https://tripsplitr.herokuapp.com/users/${status.user.id}`)
+        //     .then(res => {
+        //         console.log('axios res.data: ', res);
+        //         setCurrentUser(res);
+        //     })
+        //     .catch(err => {
+        //         alert(err);
+        //     })
+        }
+  }, [status]);
   return (
     <>
     <Form className="ui form">
@@ -71,13 +75,13 @@ const formikHOC = withFormik({
   }),
   // this sets ups submitting the form
   handleSubmit(values, { setStatus, resetForm, setSubmitting }) {
-    // axios.post('https://tripsplitr.herokuapp.com/auth/register', values)
-    //   .then(apiData => {
-    //     console.log('res: ', apiData);
-    //     setStatus(apiData);
-    //     resetForm();
-    //   })
-    //   .catch(err => alert(err));
+    axios.post('https://tripsplitr.herokuapp.com/auth/login', values)
+      .then(apiData => {
+        console.log('handle submit res: ', apiData);
+        setStatus(apiData.data);
+        resetForm();
+      })
+      .catch(err => alert(err));
   }
 });
 

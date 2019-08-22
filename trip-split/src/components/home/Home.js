@@ -56,7 +56,7 @@ const ButtonContainer = styled.div`
     }
 `;
 
-const Home = () => {
+const Home = ( { setCurrentUser } ) => {
 
     // this component is only rendered when the path is on '/'
     const Buttons = () => {
@@ -73,7 +73,7 @@ const Home = () => {
         <>
         <FormContainer>
             <Route path='/sign-up' component={SignUpForm}/>
-            <Route path='/login' component={LogInForm}/>
+            <Route path='/login' render={props => <LogInForm {...props} setCurrentUser={setCurrentUser} />} />
         </FormContainer>
         <Route exact path='/' component={Buttons} />
 
