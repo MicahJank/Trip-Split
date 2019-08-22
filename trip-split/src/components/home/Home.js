@@ -11,6 +11,7 @@ import styled from 'styled-components';
 
 const FormContainer = styled.div`
     display flex;
+    flex-direction: column;
     width: 200px;
     margin: auto;
     position: absolute;
@@ -33,6 +34,11 @@ const FormContainer = styled.div`
         display: flex;
         flex-direction: column;
     }
+
+    .ui.button {
+        margin-top: 10px;
+    }
+
 `;
 
 const ButtonContainer = styled.div`
@@ -46,6 +52,7 @@ const ButtonContainer = styled.div`
     .ui.button {
         width: 150px;
         margin-top: 10px;
+
     }
 `;
 

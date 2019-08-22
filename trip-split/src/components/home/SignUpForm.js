@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
+import { Route, NavLink } from 'react-router-dom';
+
 import axios from 'axios';
 import { Form, Field, withFormik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { Button, Checkbox, Form as SemanticForm } from 'semantic-ui-react';
+import { Button, Checkbox, Form as SemanticForm, Icon } from 'semantic-ui-react';
 
 import styled from 'styled-components';
+
+const BackButton = styled.button`
+    margin-top: 20px;
+    width: 195px;
+`;
 
 const SignUpForm = ({ errors, touched, values, status }) => {
   // const proxy = 'https://cors-anywhere.herokuapp.com/';
@@ -21,6 +28,7 @@ const SignUpForm = ({ errors, touched, values, status }) => {
       });
   }, []);
   return (
+    <>
     <Form className="ui form">
       <Field className="field" type="text" name="name" placeholder="Name" />
       <ErrorMessage name="name" component="div" />
@@ -48,6 +56,10 @@ const SignUpForm = ({ errors, touched, values, status }) => {
         Register
       </button>
     </Form>
+        <NavLink to='/'>
+        <BackButton className='ui basic teal button'><Icon name='angle left'/>Back</BackButton>
+    </NavLink>
+    </>
   );
 };
 

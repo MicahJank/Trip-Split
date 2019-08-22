@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
+import { Route, NavLink } from 'react-router-dom';
+
 import axios from 'axios';
 import { Form, Field, withFormik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { Button, Checkbox, Form as SemanticForm } from 'semantic-ui-react';
+import { Button, Checkbox, Form as SemanticForm, Icon } from 'semantic-ui-react';
 
 import styled from 'styled-components';
+
+
+const BackButton = styled.button`
+    margin-top: 20px;
+    width: 195px;
+`;
 
 const LogInForm = ({ errors, touched, values, status }) => {
   // useEffect(() => {
@@ -18,6 +26,7 @@ const LogInForm = ({ errors, touched, values, status }) => {
   //         })
   // }, []);
   return (
+    <>
     <Form className="ui form">
       <Field
         className="field"
@@ -35,10 +44,15 @@ const LogInForm = ({ errors, touched, values, status }) => {
       />
       <ErrorMessage name="password" component="div" />
 
+     
       <button className="ui button" type="submit">
         Log In
       </button>
     </Form>
+    <NavLink to='/'>
+        <BackButton className='ui basic teal button'><Icon name='angle left'/>Back</BackButton>
+    </NavLink>
+    </>
   );
 };
 
