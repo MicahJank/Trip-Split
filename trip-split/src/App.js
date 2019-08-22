@@ -3,8 +3,6 @@ import logo from './logo.svg';
 
 import { Route } from 'react-router-dom';
 
-import SignUpForm from './components/sign-up-form/SignUpForm.js';
-
 import './App.css';
 
 function App() {
