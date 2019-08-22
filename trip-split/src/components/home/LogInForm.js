@@ -8,35 +8,43 @@ import { Button, Checkbox, Form as SemanticForm } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 const LogInForm = ({ errors, touched, values, status }) => {
-
-    // useEffect(() => {
-    //     axios.get('https://tripsplitr.herokuapp.com/users')
-    //         .then(res => {
-    //             console.log('res: ', res);
-    //         })
-    //         .catch(err => {
-    //             alert(err);
-    //         })
-    // }, []);
+  // useEffect(() => {
+  //     axios.get('https://tripsplitr.herokuapp.com/users')
+  //         .then(res => {
+  //             console.log('res: ', res);
+  //         })
+  //         .catch(err => {
+  //             alert(err);
+  //         })
+  // }, []);
   return (
-    <FormContainer>
-        <Form className='ui form'>
+    <Form className="ui form">
+      <Field
+        className="field"
+        type="text"
+        name="username"
+        placeholder="UserName"
+      />
+      <ErrorMessage name="username" component="div" />
 
-            <Field className='field' type="text" name="username" placeholder="UserName" />
-            <ErrorMessage name="username" component="div" />
+      <Field
+        className="field"
+        type="password"
+        name="password"
+        placeholder="Password"
+      />
+      <ErrorMessage name="password" component="div" />
 
-            <Field className='field' type="password" name="password" placeholder="Password" />
-            <ErrorMessage name="password" component="div" />
-
-            <button className='ui button' type="submit">Register</button>
-        </Form>
-    </FormContainer>
+      <button className="ui button" type="submit">
+        Log In
+      </button>
+    </Form>
   );
 };
 
 const formikHOC = withFormik({
   // this sets up setting the values of the inputs
-  mapPropsToValues({ username, password}) {
+  mapPropsToValues({ username, password }) {
     return {
       username: username || '',
       password: password || ''

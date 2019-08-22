@@ -5,11 +5,14 @@ import { Route } from 'react-router-dom';
 
 import './App.css';
 
+// components
+import Home from './components/home/Home.js';
+
 function App() {
 
   return (
     <>
-    <Route exact path='/' component={SignUpForm}/>
+    <Route path='/' component={Home}/>
     {/* <Route path='/trips' component={} />
     <Route path='/people' component={} />
     <Route path='/transactions' component={} />

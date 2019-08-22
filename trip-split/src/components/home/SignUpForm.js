@@ -7,69 +7,53 @@ import { Button, Checkbox, Form as SemanticForm } from 'semantic-ui-react';
 
 import styled from 'styled-components';
 
-const FormContainer = styled.div`
-    display flex;
-    width: 200px;
-    margin: auto;
-    position: absolute;
-    top: 30%;
-    left: 30%;
-
-    form.ui.form {
-        width: 100%;
-        input {
-           margin-bottom: 10px;
-            width: 100%;
-        }
-    }
-
-    div {
-        color: red;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-    }
-`;
-
 const SignUpForm = ({ errors, touched, values, status }) => {
-
-    // const proxy = 'https://cors-anywhere.herokuapp.com/';
-    // const url = 'https://tripsplitr.herokuapp.com/auth/register';
-    useEffect(() => {
-        axios.get('https://tripsplitr.herokuapp.com/users')
-            .then(res => {
-                console.log('res: ', res);
-            })
-            .catch(err => {
-                alert(err);
-            })
-    }, []);
+  // const proxy = 'https://cors-anywhere.herokuapp.com/';
+  // const url = 'https://tripsplitr.herokuapp.com/auth/register';
+  useEffect(() => {
+    axios
+      .get('https://tripsplitr.herokuapp.com/users')
+      .then(res => {
+        console.log('res: ', res);
+      })
+      .catch(err => {
+        alert(err);
+      });
+  }, []);
   return (
-    <FormContainer>
-        <Form className='ui form'>
-            <Field className='field' type="text" name="name" placeholder="Name" />
-            <ErrorMessage name="name" component="div" />
+    <Form className="ui form">
+      <Field className="field" type="text" name="name" placeholder="Name" />
+      <ErrorMessage name="name" component="div" />
 
-            <Field className='field' type="text" name="username" placeholder="UserName" />
-            <ErrorMessage name="username" component="div" />
+      <Field
+        className="field"
+        type="text"
+        name="username"
+        placeholder="UserName"
+      />
+      <ErrorMessage name="username" component="div" />
 
-            <Field className='field' type="email" name="email" placeholder="Email" />
-            <ErrorMessage name="email" component="div" />
+      <Field className="field" type="email" name="email" placeholder="Email" />
+      <ErrorMessage name="email" component="div" />
 
-            <Field className='field' type="password" name="password" placeholder="Password" />
-            <ErrorMessage name="password" component="div" />
+      <Field
+        className="field"
+        type="password"
+        name="password"
+        placeholder="Password"
+      />
+      <ErrorMessage name="password" component="div" />
 
-            <button className='ui button' type="submit">Register</button>
-        </Form>
-    </FormContainer>
+      <button className="ui button" type="submit">
+        Register
+      </button>
+    </Form>
   );
 };
 
 const formikHOC = withFormik({
   // this sets up setting the values of the inputs
-  mapPropsToValues({ name, username, email, password}) {
+  mapPropsToValues({ name, username, email, password }) {
     return {
       name: name || '',
       username: username || '',
@@ -82,11 +66,12 @@ const formikHOC = withFormik({
     name: Yup.string().required(),
     username: Yup.string().required(),
     email: Yup.string().required(),
-    password: Yup.string().required(),
+    password: Yup.string().required()
   }),
   // this sets ups submitting the form
   handleSubmit(values, { setStatus, resetForm, setSubmitting }) {
-    axios.post('https://tripsplitr.herokuapp.com/auth/register', values)
+    axios
+      .post('https://tripsplitr.herokuapp.com/auth/register', values)
       .then(apiData => {
         console.log('res: ', apiData);
         setStatus(apiData);
