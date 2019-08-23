@@ -1,6 +1,6 @@
 import React, { useState } from "./node_modules/react";
 import { Tab, Menu, Icon } from "./node_modules/semantic-ui-react";
-import { Route } from "./node_modules/react-router-dom";
+import { Route, NavLink } from "./node_modules/react-router-dom";
 
 import Trips from "./components/trips-tab/Trips.js.js";
 

@@ -54,18 +54,27 @@ const ButtonContainer = styled.div`
   }
 `;
 // setCurrentUser is passed down as a prop on the login form since that is where it will be needed
-const Home = ({ setCurrentUser }) => {
-  // this component is only rendered when the path is on '/'
-  const Buttons = () => {
+const Home = ( { setCurrentUser } ) => {
+
+    // this component is only rendered when the path is on '/'
+    const Buttons = () => {
+
+        return (
+            <ButtonContainer>
+                <NavLink to={'/register/sign-up'}><Button>Sign Up</Button></NavLink>
+                <NavLink to={'/register/login'}><Button>Log In</Button></NavLink>
+            </ButtonContainer>
+        );
+    };
+
     return (
-      <ButtonContainer>
-        <NavLink exact to={"/sign-up"}>
-          <Button>Sign Up</Button>
-        </NavLink>
-        <NavLink exact to={"/login"}>
-          <Button>Log In</Button>
-        </NavLink>
-      </ButtonContainer>
+        <>
+        <FormContainer>
+            <Route path='/register/sign-up' component={SignUpForm} />
+            <Route path='/register/login' render={props => <LogInForm {...props} setCurrentUser={setCurrentUser} />} />
+        </FormContainer>
+        <Route exact path='/register' component={Buttons} />
+        </>
     );
   };
 
