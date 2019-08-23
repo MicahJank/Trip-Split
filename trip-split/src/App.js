@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 
-import { Route, Redirect, NavLink } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 import './App.css';
 
@@ -11,15 +10,11 @@ import WebApp from './components/WebApp.js';
 
 
 function App() {
-  
-  // currentUser is set in the LogInForm.js
-  const [currentUser, setCurrentUser] = useState('');
-  console.log('currentUser: ', currentUser);
   console.log('localStorage: ', localStorage);
 
   return (
     <>
-    <Route path='/register' render={props => <Home {...props} setCurrentUser={setCurrentUser} /> } />
+    <Route path='/register' component={Home} />
     <PrivateRoute exact path='/' component={WebApp} />
     </>
   );

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
-import { Route, NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import axios from 'axios';
 import { Form, Field, withFormik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { Button, Checkbox, Form as SemanticForm, Icon } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 
 import styled from 'styled-components';
 
@@ -20,8 +20,9 @@ const LogInForm = ({ errors, touched, values, status, setCurrentUser, history })
       if(status) {
         // status.token is the authentication key i will need when trying to do a get or post request that needs authentication
         localStorage.setItem('token', status.token);
+        localStorage.setItem('currentUserId', status.user.id)
         // localStorage.removeItem('token') is what i will use to remove the token when the user logs out  
-        setCurrentUser(status.user);
+        // setCurrentUser(localStorage.getItem('currentUser'));
         history.push('/');
         }
   }, [status]);
