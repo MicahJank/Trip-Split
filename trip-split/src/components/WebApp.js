@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from "./node_modules/react";
 
-import { Route } from "react-router-dom";
+import { Route } from "./node_modules/react-router-dom";
 
-import Trips from "./components/trips-tab/Trips.js";
+import Trips from "./components/trips-tab/Trips.js.js";
 
 const WebApp = () => {
   return <div>Web App</div>;

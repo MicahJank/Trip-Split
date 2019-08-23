@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 
 import { Route } from "react-router-dom";
 
 import "./App.css";
 
 // components
-import Home from "./Components/home/Home.js";
+import Home from "./components/home/Home.js";
 
 function App() {
   // currentUser is set in the LogInForm.js
