@@ -18,15 +18,10 @@ const BackButton = styled.button`
 const LogInForm = ({ errors, touched, values, status, setCurrentUser }) => {
   useEffect(() => {
       if(status) {
-        setCurrentUser(status);
-        // axios.get(`https://tripsplitr.herokuapp.com/users/${status.user.id}`)
-        //     .then(res => {
-        //         console.log('axios res.data: ', res);
-        //         setCurrentUser(res);
-        //     })
-        //     .catch(err => {
-        //         alert(err);
-        //     })
+        // status.token is the authentication key i will need when trying to do a get or post request that needs authentication
+        localStorage.setItem('token', status.token);
+        // localStorage.removeItem('token') is what i will use to remove the token when the user logs out  
+        setCurrentUser(status.user);
         }
   }, [status]);
   return (

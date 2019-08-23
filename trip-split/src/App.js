@@ -12,6 +12,7 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState('');
   console.log('currentUser: ', currentUser);
+  console.log('localStorage: ', localStorage);
   return (
     <>
     <Route path='/' render={props => <Home {...props} setCurrentUser={setCurrentUser} /> } />
