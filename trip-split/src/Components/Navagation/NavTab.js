@@ -4,9 +4,6 @@ import { Route } from "react-router-dom";
 
 import Trips from "./components/trips-tab/Trips.js";
 
-const WebApp = () => {
-  return <div>Web App</div>;
-
   const panes = [
     {
       menuItem: (
@@ -48,15 +45,8 @@ const WebApp = () => {
       render: () => <Tab.Pane></Tab.Pane>
     },
   
-
-  
-  
   ];
   
-  export default function TabNav() {
+  export default function NavTab() {
     return <Tab panes={panes} />
-
-  
 };
-
-export default WebApp};
