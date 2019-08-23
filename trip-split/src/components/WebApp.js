@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 import { Route } from "react-router-dom";
-
-import Trips from "./components/trips-tab/Trips.js";
+import NavTab from './navagation/NavTab.js';
 
 const WebApp = () => {
   return (
   <div>Web App</div>
+  
   );
 };
 

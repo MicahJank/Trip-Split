@@ -1,31 +1,28 @@
 import React, { useState } from "react";
 
-import { Route } from "react-router-dom";
+import { Route, NavLink } from "react-router-dom";
 
-import Trips from "./components/trips-tab/Trips.js";
+import { Tab, Menu, Icon } from "semantic-ui-react";
+
 
   const panes = [
     {
       menuItem: (
         <Menu.Item key="trips">
           <NavLink to="/">
-            <Icon name="trips" />
+            <Icon name="car" />
             Trips
           </NavLink>
         </Menu.Item>
       ),
-      render: () => (
-        <Tab.Pane>
-          <AppRouter />
-        </Tab.Pane>
-      )
+      render: () => <Tab.Pane></Tab.Pane>
     },
   
     {
       menuItem: (
         <Menu.Item key="people">
           <NavLink to="/people">
-            <Icon name="People" />
+            <Icon name="users" />
             People
           </NavLink>
         </Menu.Item>
@@ -37,7 +34,7 @@ import Trips from "./components/trips-tab/Trips.js";
       menuItem: (
         <Menu.Item key="transactions">
           <NavLink to="/transactions">
-            <Icon name="Transaction" />
+            <Icon name="money bill alternate" />
             Transactions
           </NavLink>
         </Menu.Item>
