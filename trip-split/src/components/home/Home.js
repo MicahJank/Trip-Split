@@ -63,8 +63,8 @@ const Home = ( { setCurrentUser } ) => {
 
         return (
             <ButtonContainer>
-                <NavLink exact to={'/sign-up'}><Button>Sign Up</Button></NavLink>
-                <NavLink exact to={'/login'}><Button>Log In</Button></NavLink>
+                <NavLink to={'/register/sign-up'}><Button>Sign Up</Button></NavLink>
+                <NavLink to={'/register/login'}><Button>Log In</Button></NavLink>
             </ButtonContainer>
         );
     };
@@ -72,12 +72,10 @@ const Home = ( { setCurrentUser } ) => {
     return (
         <>
         <FormContainer>
-            <Route path='/sign-up' component={SignUpForm}/>
-            <Route path='/login' render={props => <LogInForm {...props} setCurrentUser={setCurrentUser} />} />
+            <Route path='/register/sign-up' component={SignUpForm} />
+            <Route path='/register/login' render={props => <LogInForm {...props} setCurrentUser={setCurrentUser} />} />
         </FormContainer>
-        <Route exact path='/' component={Buttons} />
-
-        
+        <Route exact path='/register' component={Buttons} />
         </>
     );
 };

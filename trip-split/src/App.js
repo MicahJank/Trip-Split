@@ -19,8 +19,8 @@ function App() {
 
   return (
     <>
-    <Route path='/' render={props => <Home {...props} setCurrentUser={setCurrentUser} /> } />
-    <PrivateRoute path='/trip-split' component={WebApp} />
+    <Route path='/register' render={props => <Home {...props} setCurrentUser={setCurrentUser} /> } />
+    <PrivateRoute exact path='/' component={WebApp} />
     </>
   );
 }
@@ -29,7 +29,7 @@ function App() {
 const PrivateRoute = ({ component: WebApp, ...rest }) => (
   <Route {...rest} render={ (props) => (
     localStorage.token ? <WebApp {...props} /> 
-    : <Redirect to='/login' />
+    : <Redirect to='/register' />
   )} />
 )
 

@@ -22,7 +22,7 @@ const LogInForm = ({ errors, touched, values, status, setCurrentUser, history })
         localStorage.setItem('token', status.token);
         // localStorage.removeItem('token') is what i will use to remove the token when the user logs out  
         setCurrentUser(status.user);
-        history.push('/trip-split');
+        history.push('/');
         }
   }, [status]);
   return (
