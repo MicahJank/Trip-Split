@@ -1,25 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
+
+import { Route } from 'react-router-dom';
+
 import './App.css';
 
+// components
+import Home from './components/home/Home.js';
+
+
 function App() {
+  // currentUser is set in the LogInForm.js
+  const [currentUser, setCurrentUser] = useState('');
+  console.log('currentUser: ', currentUser);
+  console.log('localStorage: ', localStorage);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Route path='/' render={props => <Home {...props} setCurrentUser={setCurrentUser} /> } />
+    {/* <Route path='/trips' component={} />
+    <Route path='/people' component={} />
+    <Route path='/transactions' component={} />
+    <Route path='trip-form' component={} /> */}
+    </>
   );
 }
 
