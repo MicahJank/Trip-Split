@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Redirect } from 'react-router-dom';
 
 import axios from 'axios';
 import { Form, Field, withFormik, ErrorMessage } from 'formik';
@@ -22,6 +22,7 @@ const LogInForm = ({ errors, touched, values, status, setCurrentUser }) => {
         localStorage.setItem('token', status.token);
         // localStorage.removeItem('token') is what i will use to remove the token when the user logs out  
         setCurrentUser(status.user);
+
         }
   }, [status]);
   return (
@@ -43,10 +44,10 @@ const LogInForm = ({ errors, touched, values, status, setCurrentUser }) => {
       />
       <ErrorMessage name="password" component="div" />
 
-     
       <button className="ui button" type="submit">
         Log In
       </button>
+
     </Form>
     <NavLink to='/'>
         <BackButton className='ui basic teal button'><Icon name='angle left'/>Back</BackButton>
