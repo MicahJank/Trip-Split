@@ -15,14 +15,14 @@ const BackButton = styled.button`
     width: 195px;
 `;
 
-const LogInForm = ({ errors, touched, values, status, setCurrentUser }) => {
+const LogInForm = ({ errors, touched, values, status, setCurrentUser, history }) => {
   useEffect(() => {
       if(status) {
         // status.token is the authentication key i will need when trying to do a get or post request that needs authentication
         localStorage.setItem('token', status.token);
         // localStorage.removeItem('token') is what i will use to remove the token when the user logs out  
         setCurrentUser(status.user);
-
+        history.push('/trip-split');
         }
   }, [status]);
   return (

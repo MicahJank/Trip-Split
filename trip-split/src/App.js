@@ -17,24 +17,15 @@ function App() {
   console.log('currentUser: ', currentUser);
   console.log('localStorage: ', localStorage);
 
-  // This checks if the user has an authentication token in local storage. If they do then they should skip the log in process and go directly to the app.
-  // if not it will show them the sign up page.
-  if(localStorage.token) {
-    return (
-      <>
-        <Redirect to='/trip-split' />
-        <PrivateRoute path='/trip-split' component={WebApp} />
-      </>
-    );
-  }
-
   return (
     <>
     <Route path='/' render={props => <Home {...props} setCurrentUser={setCurrentUser} /> } />
+    <PrivateRoute path='/trip-split' component={WebApp} />
     </>
   );
 }
 
+// the private route will check to make sure that the user has an authentication token, if they dont it will redirect them to the login page.
 const PrivateRoute = ({ component: WebApp, ...rest }) => (
   <Route {...rest} render={ (props) => (
     localStorage.token ? <WebApp {...props} /> 
