@@ -55,7 +55,7 @@ const ButtonContainer = styled.div`
 
     }
 `;
-
+// setCurrentUser is passed down as a prop on the login form since that is where it will be needed
 const Home = ( { setCurrentUser } ) => {
 
     // this component is only rendered when the path is on '/'

@@ -8,8 +8,9 @@ import './App.css';
 // components
 import Home from './components/home/Home.js';
 
-function App() {
 
+function App() {
+  // currentUser is set in the LogInForm.js
   const [currentUser, setCurrentUser] = useState('');
   console.log('currentUser: ', currentUser);
   console.log('localStorage: ', localStorage);
