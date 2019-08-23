@@ -13,4 +13,3 @@ We use the third party, promise-based HTTP client Axios for making our API calls
 Formik is used in conjunction with Yup to create the Forms and validation.
 
 The third party styling library Semantic-ui is used for styling purposes.
-
