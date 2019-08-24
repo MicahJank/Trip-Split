@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState } from "react";
 
-import { Button } from 'semantic-ui-react';
+import { Route } from "react-router-dom";
+
 import styled from 'styled-components';
+
+import CurrentTrip from './CurrentTrip.js';
+import PastTrips from './PastTrips.js';
+
 
 const Trips = () => {
 
     return (
-
-        <div>Trips Component</div>
-    );    
+        <>
+        <CurrentTrip />
+        <PastTrips />
+        </>
+    );
 };
 
 export default Trips;

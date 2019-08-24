@@ -16,6 +16,19 @@ const Row = styled.div`
     }
 `;
 
+const HomeContainer = styled.div`
+
+`;
+
+const HomeTab = () => {
+    return (
+        <Row className='top-row' fluid header='Header'>
+            <h1>Trips</h1>
+            <h3>CurrentTrip</h3>
+        </Row>
+        );
+};
+
 const TripsTab = () => {
     return (
         <Row className='top-row' fluid header='Header'>

@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { Card } from 'semantic-ui-react';
 
 import TopRow from './top-row/TopRow.js';
+import MainContent from './main/MainContent.js';
 
 
 const MainContainer = styled.div`
@@ -30,7 +31,9 @@ const WebApp = () => {
   return (
     <MainContainer>
         <TopRow className='top' />
-        <Main className='main' />
+        <Main className='main'>
+            <MainContent />
+        </Main>
         <NavTab className='nav' />
     </MainContainer>
   );

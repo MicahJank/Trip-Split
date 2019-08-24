@@ -5,11 +5,11 @@ import { Route } from "react-router-dom";
 import styled from 'styled-components';
 
 
-const CurrentTrip = () => {
+const People = () => {
 
     return (
-        <h2>CurrentTrip</h2>
+        <h2>People</h2>
     );
 };
 
-export default CurrentTrip;
+export default People;
