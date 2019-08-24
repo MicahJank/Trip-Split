@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Route } from "react-router-dom";
 import NavTab from './navagation/NavTab.js';
@@ -26,9 +26,10 @@ const Main = styled.div`
 `;
 
 const WebApp = () => {
+
   return (
     <MainContainer>
-        <TopRow className='top'/>
+        <TopRow className='top' />
         <Main className='main' />
         <NavTab className='nav' />
     </MainContainer>
