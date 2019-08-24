@@ -21,7 +21,8 @@ const ButtonContainer = styled.div`
 
     return (
     <ButtonContainer>
-      <Button.Group size='huge' className='buttons-group'>
+      <Button.Group widths='1' size='huge' compact className='buttons-group'>
+        <NavLink exact to={'/'} className='ui button'><Icon name='home' /></NavLink>
         <NavLink to={'/trips'} className='ui button'><Icon name='car' />Trips</NavLink>
         <NavLink to={'/people'} className='ui button'><Icon name='users' />People</NavLink>
         <NavLink to={'/transactions'} className='ui button'><Icon name='money' />Transactions</NavLink>
