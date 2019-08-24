@@ -17,10 +17,10 @@ const ButtonContainer = styled.div`
 
     return (
     <ButtonContainer>
-      <Button.Group className='buttons-group'>
-        <Button>One</Button>
-        <Button>Two</Button>
-        <Button>Three</Button>
+      <Button.Group size='huge' className='buttons-group'>
+        <Button><Icon name='car' />Trips</Button>
+        <Button><Icon name='users' />People</Button>
+        <Button><Icon name='money' />Transactions</Button>
       </Button.Group>
     </ButtonContainer>
     );
