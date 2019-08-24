@@ -2,48 +2,23 @@ import React, { useState } from "react";
 
 import { Route, NavLink } from "react-router-dom";
 
-import { Tab, Menu, Icon } from "semantic-ui-react";
+import styled from 'styled-components';
+import { Tab, Menu, Icon, Button } from "semantic-ui-react";
 
-
-  const panes = [
-    {
-      menuItem: (
-        <Menu.Item key="trips">
-          <NavLink to="/">
-            <Icon name="car" />
-            Trips
-          </NavLink>
-        </Menu.Item>
-      ),
-      render: () => <Tab.Pane></Tab.Pane>
-    },
-  
-    {
-      menuItem: (
-        <Menu.Item key="people">
-          <NavLink to="/people">
-            <Icon name="users" />
-            People
-          </NavLink>
-        </Menu.Item>
-      ),
-      render: () => <Tab.Pane></Tab.Pane>
-    },
-  
-    {
-      menuItem: (
-        <Menu.Item key="transactions">
-          <NavLink to="/transactions">
-            <Icon name="money bill alternate" />
-            Transactions
-          </NavLink>
-        </Menu.Item>
-      ),
-      render: () => <Tab.Pane></Tab.Pane>
-    },
-  
-  ];
+const ButtonContainer = styled.div`
+  display: flex;
+`;
   
   export default function NavTab() {
-    return <Tab panes={panes} />
+
+    return (
+    <ButtonContainer>
+      <Button.Group>
+        <Button>One</Button>
+        <Button>Two</Button>
+        <Button>Three</Button>
+      </Button.Group>
+    </ButtonContainer>
+    );
+ 
 };
