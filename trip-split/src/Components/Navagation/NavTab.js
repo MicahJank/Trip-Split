@@ -10,6 +10,10 @@ const ButtonContainer = styled.div`
 
   .buttons-group {
     width: 100%;
+
+    a {
+      border-radius: 0;
+    }
   }
 `;
   
@@ -18,9 +22,9 @@ const ButtonContainer = styled.div`
     return (
     <ButtonContainer>
       <Button.Group size='huge' className='buttons-group'>
-        <Button><Icon name='car' />Trips</Button>
-        <Button><Icon name='users' />People</Button>
-        <Button><Icon name='money' />Transactions</Button>
+        <NavLink to={'/trips'} className='ui button'><Icon name='car' />Trips</NavLink>
+        <NavLink to={'/people'} className='ui button'><Icon name='users' />People</NavLink>
+        <NavLink to={'/transactions'} className='ui button'><Icon name='money' />Transactions</NavLink>
       </Button.Group>
     </ButtonContainer>
     );

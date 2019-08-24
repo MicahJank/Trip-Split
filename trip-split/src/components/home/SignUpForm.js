@@ -56,7 +56,7 @@ const SignUpForm = ({ errors, touched, values, status }) => {
         Register
       </button>
     </Form>
-        <NavLink to='/'>
+        <NavLink to='/register'>
         <BackButton className='ui basic teal button'><Icon name='angle left'/>Back</BackButton>
     </NavLink>
     </>
