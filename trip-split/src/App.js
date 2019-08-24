@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
 import { Route, Redirect } from "react-router-dom";
-
+import WebApp from "./components/WebApp";
 import "./App.css";
 
 // components
 import Home from "./components/home/Home.js";
 function App() {
+  console.log(localStorage);
   return (
     <>
       <Route path="/register" component={Home} />

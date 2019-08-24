@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "./node_modules/react";
+import React, { useState, useEffect } from "react";
 
-import { Route, NavLink } from "./node_modules/react-router-dom";
+import { Route, NavLink } from "react-router-dom";
 
-import axios from "./node_modules/axios";
-import { Form, Field, withFormik, ErrorMessage } from "./node_modules/formik";
-import * as Yup from "./node_modules/yup";
+import axios from "axios";
+import { Form, Field, withFormik, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import {
   Button,
   Checkbox,
   Form as SemanticForm,
   Icon
-} from "./node_modules/semantic-ui-react";
+} from "semantic-ui-react";
 
-import styled from "./node_modules/styled-components";
+import styled from "styled-components";
 
 const BackButton = styled.button`
   margin-top: 20px;

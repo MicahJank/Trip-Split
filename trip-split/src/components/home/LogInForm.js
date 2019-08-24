@@ -9,8 +9,6 @@ import { Icon } from "semantic-ui-react";
 
 import styled from "styled-components";
 
-import styled from "./node_modules/styled-components";
-
 const BackButton = styled.button`
   margin-top: 20px;
   width: 195px;
