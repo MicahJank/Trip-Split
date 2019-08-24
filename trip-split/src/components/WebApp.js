@@ -9,20 +9,28 @@ import { Card } from 'semantic-ui-react';
 import TopRow from './top-row/TopRow.js';
 
 
-const MainContainer = styled.div`]
+const MainContainer = styled.div`
     min-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: stretch;
+
+    .top, .main, .nav {
+        flex-shrink: 0;
+    }
+
 `;
 
-
+const Main = styled.div`
+    flex-grow: 1;
+`;
 
 const WebApp = () => {
   return (
     <MainContainer>
-        <TopRow />
-        <NavTab />
+        <TopRow className='top'/>
+        <Main className='main' />
+        <NavTab className='nav' />
     </MainContainer>
   );
 };
