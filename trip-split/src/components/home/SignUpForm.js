@@ -15,8 +15,7 @@ const BackButton = styled.button`
 `;
 
 const SignUpForm = ({ errors, touched, values, status }) => {
-  // const proxy = 'https://cors-anywhere.herokuapp.com/';
-  // const url = 'https://tripsplitr.herokuapp.com/auth/register';
+
   useEffect(() => {
     axios
       .get('https://tripsplitr.herokuapp.com/users')
@@ -26,7 +25,8 @@ const SignUpForm = ({ errors, touched, values, status }) => {
       .catch(err => {
         alert(err);
       });
-  }, []);
+  }, [status]);
+  
   return (
     <>
     <Form className="ui form">
@@ -56,7 +56,7 @@ const SignUpForm = ({ errors, touched, values, status }) => {
         Register
       </button>
     </Form>
-        <NavLink to='/'>
+        <NavLink to='/register'>
         <BackButton className='ui basic teal button'><Icon name='angle left'/>Back</BackButton>
     </NavLink>
     </>
@@ -84,6 +84,7 @@ const formikHOC = withFormik({
   handleSubmit(values, { setStatus, resetForm, setSubmitting }) {
     axios
       .post('https://tripsplitr.herokuapp.com/auth/register', values)
+     
       .then(apiData => {
         console.log('res: ', apiData);
         setStatus(apiData);
