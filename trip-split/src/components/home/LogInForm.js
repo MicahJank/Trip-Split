@@ -14,14 +14,7 @@ const BackButton = styled.button`
   width: 195px;
 `;
 
-const LogInForm = ({
-  errors,
-  touched,
-  values,
-  status,
-  setCurrentUser,
-  history
-}) => {
+const LogInForm = ({ errors, touched, values, status, history }) => {
   useEffect(() => {
     if (status) {
       // status.token is the authentication key i will need when trying to do a get or post request that needs authentication
@@ -29,6 +22,7 @@ const LogInForm = ({
       localStorage.setItem("currentUserId", status.user.id);
       // localStorage.removeItem('token') is what i will use to remove the token when the user logs out
       // setCurrentUser(localStorage.getItem('currentUser'));
+
       history.push("/");
     }
   }, [status]);
@@ -50,12 +44,8 @@ const LogInForm = ({
           placeholder="Password"
         />
         <ErrorMessage name="password" component="div" />
-
-        <button className="ui button" type="submit">
-          Log In
-        </button>
       </Form>
-      <NavLink to="/">
+      <NavLink to="/register">
         <BackButton className="ui basic teal button">
           <Icon name="angle left" />
           Back

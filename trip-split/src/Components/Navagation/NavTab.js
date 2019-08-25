@@ -1,22 +1,42 @@
 import React, { useState } from "react";
-import { Tab, Menu, Icon } from "semantic-ui-react";
+
 import { Route, NavLink } from "react-router-dom";
-import { Container, Button, ButtonGroup } from "semantic-ui-react";
+
+import styled from "styled-components";
+import { Tab, Menu, Icon, Button } from "semantic-ui-react";
+
+const ButtonContainer = styled.div`
+  display: flex;
+
+  .buttons-group {
+    width: 100%;
+
+    a {
+      border-radius: 0;
+    }
+  }
+`;
 
 export default function NavTab() {
   return (
-    <Container textAlign="center">
-      <Button.Group>
-        <NavLink exact to={"/trips"}>
-          <Button color="blue">Trips</Button>
+    <ButtonContainer>
+      <Button.Group widths="1" size="huge" compact className="buttons-group">
+        <NavLink exact to={"/"} className="ui button">
+          <Icon name="home" />
         </NavLink>
-        <NavLink exact to={"/people"}>
-          <Button color="blue">People</Button>
+        <NavLink to={"/trips"} className="ui button">
+          <Icon name="car" />
+          Trips
         </NavLink>
-        <NavLink exact to={"/transaction"}>
-          <Button color="blue">Transactions</Button>
+        <NavLink to={"/people"} className="ui button">
+          <Icon name="users" />
+          People
+        </NavLink>
+        <NavLink to={"/transactions"} className="ui button">
+          <Icon name="money" />
+          Transactions
         </NavLink>
       </Button.Group>
-    </Container>
+    </ButtonContainer>
   );
 }

@@ -7,11 +7,16 @@ import "./App.css";
 // components
 import Home from "./components/home/Home.js";
 function App() {
-  console.log(localStorage);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  console.log("localStorage: ", localStorage);
+
   return (
     <>
-      <Route path="/register" component={Home} />
-      <PrivateRoute exact path="/" component={WebApp} />
+      <Route
+        path="/register"
+        render={props => <Home {...props} setIsLoggedIn={setIsLoggedIn} />}
+      />
+      <PrivateRoute path="/" component={WebApp} />
     </>
   );
 }
