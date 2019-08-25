@@ -15,7 +15,7 @@ const BackButton = styled.button`
     width: 195px;
 `;
 
-const LogInForm = ({ errors, touched, values, status, setIsLoggedIn, history }) => {
+const LogInForm = ({ errors, touched, values, status, history }) => {
   useEffect(() => {
       if(status) {
         // status.token is the authentication key i will need when trying to do a get or post request that needs authentication

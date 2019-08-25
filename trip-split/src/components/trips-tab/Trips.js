@@ -22,7 +22,6 @@ const Trips = () => {
     return (
         <>
         <CurrentTrip />
-        {/* <Divide>Past Trips</Divide> */}
         <PastTrips />
         </>
     );
