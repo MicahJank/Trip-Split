@@ -11,10 +11,12 @@ import { Route, NavLink } from "react-router-dom";
 
 export default function NavTab() {
   return (
-    <Container>
+    <Container textAlign="center">
       <Button.Group>
         <NavLink exact to={"/trips"}>
-          <Button color="blue">Trips</Button>
+          <Button color="blue" class="ui bottom attached button">
+            Trips
+          </Button>
         </NavLink>
         <NavLink exact to={"/people"}>
           <Button color="blue">People</Button>
