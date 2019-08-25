@@ -22,7 +22,7 @@ const Trips = () => {
     return (
         <>
         <CurrentTrip />
-        <Divide>Past Trips</Divide>
+        {/* <Divide>Past Trips</Divide> */}
         <PastTrips />
         </>
     );
