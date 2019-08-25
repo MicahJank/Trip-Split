@@ -1,22 +1,14 @@
 import React, { useState } from "react";
-import {
-  Tab,
-  Menu,
-  Icon,
-  Container,
-  Button,
-  ButtonGroup
-} from "semantic-ui-react";
+import { Tab, Menu, Icon } from "semantic-ui-react";
 import { Route, NavLink } from "react-router-dom";
+import { Container, Button, ButtonGroup } from "semantic-ui-react";
 
 export default function NavTab() {
   return (
     <Container textAlign="center">
       <Button.Group>
         <NavLink exact to={"/trips"}>
-          <Button color="blue" class="ui bottom attached button">
-            Trips
-          </Button>
+          <Button color="blue">Trips</Button>
         </NavLink>
         <NavLink exact to={"/people"}>
           <Button color="blue">People</Button>
