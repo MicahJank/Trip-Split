@@ -7,7 +7,7 @@ import { Card, Image, Icon, Button } from 'semantic-ui-react';
 
 
 const Container = styled.div`
-    margin: 20px;
+    margin: 70px;
 
     .left.aligned.content {
         display: flex;
