@@ -17,7 +17,7 @@ const CardDiv = styled.div`
 
 const PastTrips = () => {
 
-    const [pastTrips, setPastTrips] = useState('');
+    const [pastTrips, setPastTrips] = useState([]);
 
     useEffect(() => {
         // the point of this axios call is to get the trips from the database, then once i have the trips i can filter out only those trips that
@@ -25,16 +25,12 @@ const PastTrips = () => {
         axios.get('https://tripsplitr.herokuapp.com/trips')
             .then(res => {
                 console.log(res);
-                const pastTripsArray = res.data.filter(trip => trip.complete === 1);
-                setPastTrips(pastTripsArray);
-                
+                setPastTrips(res.data.filter(trip => trip.complete === 1));          
             })
             .catch(err => {
                 alert(err);
             });
-
-    }, []);
-
+    }, [pastTrips.length]);
 
     // this conditional checks if there are trips in the pastTrips array, if there is then it can render out the cards for the trips
     // if not then it should just display some text stating that there are no trips
