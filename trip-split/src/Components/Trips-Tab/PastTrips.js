@@ -15,22 +15,10 @@ const CardDiv = styled.div`
 `;
 
 
-const PastTrips = () => {
+const PastTrips = ( { trips } ) => {
 
-    const [pastTrips, setPastTrips] = useState([]);
-
-    useEffect(() => {
-        // the point of this axios call is to get the trips from the database, then once i have the trips i can filter out only those trips that
-        // have been completed, the completed trips then get assigned into pastTrips
-        axios.get('https://tripsplitr.herokuapp.com/trips')
-            .then(res => {
-                console.log(res);
-                setPastTrips(res.data.filter(trip => trip.complete === 1));          
-            })
-            .catch(err => {
-                alert(err);
-            });
-    }, [pastTrips.length]);
+    // for the past trips i will need to get the trips from the Trips.js and filter out any trips that have not been completed yet.
+    const pastTrips = trips.filter(trip => trip.complete === 1);
 
     // this conditional checks if there are trips in the pastTrips array, if there is then it can render out the cards for the trips
     // if not then it should just display some text stating that there are no trips

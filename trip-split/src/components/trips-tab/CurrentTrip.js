@@ -47,9 +47,24 @@ const NoCurrentTrip = () => {
 
 // This is the component that will display when there is an active trip
 const ActiveTrip = () => {
+
+  // const [pastTrips, setPastTrips] = useState([]);
+
+  // useEffect(() => {
+  //     // the point of this axios call is to get the trips from the database, then once i have the trips i can filter out only those trips that
+  //     // have been completed, the completed trips then get assigned into pastTrips
+  //     axios.get('https://tripsplitr.herokuapp.com/trips')
+  //         .then(res => {
+  //             console.log(res);
+  //             setPastTrips(res.data.filter(trip => trip.complete === 1));          
+  //         })
+  //         .catch(err => {
+  //             alert(err);
+  //         });
+  // }, [pastTrips.length]);
+
     return (
       <Card centered={true}>
-        
         <Card.Content textAlign='left'>
           <Card.Header>Matthew</Card.Header>
           <Card.Meta>
@@ -73,7 +88,7 @@ const CurrentTrip = () => {
   if (currentTrip) {
     return <h1>Theres a trip!!</h1>;
   } else {
-    return NoCurrentTrip();
+    return <NoCurrentTrip />;
   }
 };
 

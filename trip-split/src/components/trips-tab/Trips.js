@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Route } from "react-router-dom";
+
+import axios from 'axios';
 
 import styled from 'styled-components';
 import { Segment } from 'semantic-ui-react';
@@ -19,10 +21,24 @@ const Divide = styled.h4`
 
 const Trips = () => {
 
+    const [trips, setTrips] = useState([]);
+
+    useEffect(() => {
+        // the point of this axios call is to get the trips from the database, then once i have the trips i can filter out only those trips that
+        // have been completed, the completed trips then get assigned into pastTrips
+        axios.get('https://tripsplitr.herokuapp.com/trips')
+            .then(res => {
+                setTrips(res.data);          
+            })
+            .catch(err => {
+                alert(err);
+            });
+    }, [trips.length]);
+
     return (
         <>
         <CurrentTrip />
-        <PastTrips />
+        <PastTrips trips={trips} />
         </>
     );
 };
