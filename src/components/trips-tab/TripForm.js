@@ -5,6 +5,9 @@ import { Route, NavLink } from "react-router-dom";
 import axios from 'axios';
 import * as Yup from 'yup';
 
+import DatePicker from "react-datepicker"; 
+import "react-datepicker/dist/react-datepicker.css";
+
 import styled from 'styled-components';
 import { Icon, Button } from 'semantic-ui-react';
 
@@ -40,7 +43,9 @@ const TripForm = ({ errors, touched, values, status, setTrips }) => {
             return (
                 <>
             <Form className="ui form">
-                <Field className="field" type="text" name="date" placeholder="What date does your trip start?"/> 
+                {/* {TODO: Implement DatePicker as time permits} */}
+                {/* <DatePicker className="field" type="date" name="date" placeholder="What date does your trip start?" /> */}
+                <Field className="field" type="date" name="date" placeholder="What date does your trip start?"/> 
             </Form>
             <Button onClick={clickFunction} primary>Next</Button>
             </>
@@ -77,7 +82,9 @@ const formikHOC = withFormik({
   validationSchema: Yup.object().shape({
     name: Yup.string().required(),
     base_cost: Yup.string().required(),
-    date: Yup.string().required()
+    date: Yup
+        .number()
+        .required()
   }),
   // this sets ups submitting the form
   handleSubmit(values, {props, setStatus, resetForm, setSubmitting }) {

@@ -16,8 +16,13 @@ const MainContainer = styled.div`
     flex-direction: column;
     align-items: stretch;
 
-    .top, .main, .nav {
+    .top, .main {
         flex-shrink: 0;
+    }
+
+    .nav {
+        position: absolute;
+        bottom: 0;
     }
 
 `;
