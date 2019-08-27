@@ -13,7 +13,7 @@ import Profile from '../user-profile/Profile.js';
 import CurrentTrip from '../trips-tab/CurrentTrip.js';
 
 
-const MainContent = () => {
+const MainContent = ( { setCurrentTripName } ) => {
 
    // trip id is being set whenever the user clicks on one of the trips in the list
    const [tripId, setTripId] = useState('');
@@ -26,6 +26,7 @@ const MainContent = () => {
          axios.get(`https://tripsplitr.herokuapp.com/trips/${tripId}`)
             .then(res => {
                setActiveTrip(res.data);
+               setCurrentTripName(res.data.name);
             })
             .catch(err => {
                alert(err);

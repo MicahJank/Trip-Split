@@ -33,11 +33,13 @@ const Main = styled.div`
 
 const WebApp = () => {
 
+    const [currentTripName, setCurrentTripName] = useState('');
+
   return (
     <MainContainer>
-        <TopRow className='top' />
+        <TopRow className='top' currentTripName={currentTripName} />
         <Main className='main'>
-            <MainContent />
+            <MainContent setCurrentTripName={setCurrentTripName} />
         </Main>
         <NavTab className='nav' />
     </MainContainer>
