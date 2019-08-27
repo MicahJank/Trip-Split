@@ -9,6 +9,7 @@ import { Segment } from 'semantic-ui-react';
 
 import CurrentTrip from './CurrentTrip.js';
 import PastTrips from './PastTrips.js';
+import UpcomingTrips from './UpcomingTrips.js';
 
 
 const Divide = styled.h4`
@@ -38,6 +39,7 @@ const Trips = () => {
     return (
         <>
         <CurrentTrip trips={trips} />
+        <UpcomingTrips trips={trips} />
         <PastTrips trips={trips} />
         </>
     );

@@ -5,6 +5,8 @@ import { Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { Card, Image, Icon, Button } from 'semantic-ui-react';
 
+import TripModal from './TripModal.js';
+
 
 const Container = styled.div`
     margin: 70px;
@@ -36,9 +38,7 @@ const NoCurrentTrip = () => {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <Button fluid positive>
-                    Create A Trip!
-                </Button>
+                <TripModal />
             </Card.Content>
         </Card>
     </Container>
@@ -48,7 +48,7 @@ const NoCurrentTrip = () => {
 // This is the component that will display when there is an active trip
 // NOTE: 'trips' property is coming from Trips.js originally
 const ActiveTrip = ( { trips } ) => {
-  
+
     return (
       <Card centered={true}>
         <Card.Content textAlign='left'>
