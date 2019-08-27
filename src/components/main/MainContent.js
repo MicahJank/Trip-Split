@@ -39,7 +39,7 @@ const MainContent = () => {
    return (
     <>
     <Route exact path='/' component={Profile}/>
-    <Route path='/trips' render={(props) => <Trips {...props} setTripId={setTripId} />} />
+    <Route path='/trips' render={(props) => <Trips {...props} setTripId={setTripId} activeTrip={activeTrip} />} />
     <Route path='/people' component={People} />
     <Route path='/transactions' component={Transactions} />
     </>

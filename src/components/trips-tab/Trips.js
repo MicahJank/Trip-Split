@@ -10,6 +10,7 @@ import { Segment } from 'semantic-ui-react';
 import CurrentTrip from './CurrentTrip.js';
 import PastTrips from './PastTrips.js';
 import UpcomingTrips from './UpcomingTrips.js';
+import CreateTrip from './CreateTrip.js';
 
 
 const Divide = styled.h4`
@@ -20,7 +21,7 @@ const Divide = styled.h4`
     padding: 10px;
 `;
 
-const Trips = ({history, setTripId}) => {
+const Trips = ({history, setTripId, activeTrip}) => {
 
     const [trips, setTrips] = useState([]);
 
@@ -39,7 +40,8 @@ const Trips = ({history, setTripId}) => {
 
     return (
         <>
-        <CurrentTrip setTrips={setTrips} trips={trips} />
+        <CurrentTrip setTrips={setTrips} trips={trips} activeTrip={activeTrip} />
+        <CreateTrip setTrips={setTrips} />
         <UpcomingTrips setTripId={setTripId} trips={trips} />
         <PastTrips setTripId={setTripId} trips={trips} />
         </>

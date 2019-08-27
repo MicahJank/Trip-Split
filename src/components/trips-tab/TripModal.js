@@ -18,7 +18,7 @@ const TripModal = ({setTrips}) => {
     };
 
     return (
-    <Modal open={closeModal} trigger={<Button onClick={toggleModal} fluid positive>Create Trip</Button>}>
+    <Modal open={closeModal} trigger={<Button onClick={toggleModal} fluid positive>Create New Trip</Button>}>
         <Modal.Header>Please Fill in the Information</Modal.Header>
         <Modal.Content>
             <TripForm setTrips={setTrips} toggleModal={toggleModal} />
