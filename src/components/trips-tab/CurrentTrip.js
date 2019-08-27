@@ -26,7 +26,7 @@ const currentTrip = false;
 
 // this is the component that will display when there is no active trip
 // TODO: styling
-const NoCurrentTrip = () => {
+const NoCurrentTrip = ({setTrips}) => {
   return (
       <Container>
         <Card centered={true}>
@@ -38,7 +38,7 @@ const NoCurrentTrip = () => {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <TripModal />
+              <TripModal setTrips={setTrips} />
             </Card.Content>
         </Card>
     </Container>
@@ -70,11 +70,11 @@ const ActiveTrip = ( { trips } ) => {
     );
   };
 
-const CurrentTrip = ( { trips } ) => {
+const CurrentTrip = ( { trips, setTrips } ) => {
   if (currentTrip) {
     return <ActiveTrip trips={trips} />;
   } else {
-    return <NoCurrentTrip />;
+    return <NoCurrentTrip setTrips={setTrips} />;
   }
 };
 

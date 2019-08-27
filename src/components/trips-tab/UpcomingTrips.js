@@ -7,7 +7,7 @@ import { Route } from "react-router-dom";
 import styled from 'styled-components';
 import { Card, Feed } from 'semantic-ui-react';
 
-import PastTripCard from './PastTripCard.js';
+import TripCard from './TripCard.js';
 
 const CardDiv = styled.div`
     width: 80%;
@@ -15,10 +15,9 @@ const CardDiv = styled.div`
 `;
 
 
-const UpcomingTrips = ( { trips } ) => {
+const UpcomingTrips = ( { trips, setTripId } ) => {
 
-    // for the past trips i will need to get the trips from the Trips.js and filter out any trips that have not been completed yet.
-    const upComing = trips.filter(trip => trip.complete === 0);
+    const upComing = trips.filter(trip => !trip.complete);
 
     // this conditional checks if there are trips in the upComing array, if there is then it can render out the cards for the trips
     // if not then it should just display some text stating that there are no trips
@@ -32,7 +31,7 @@ const UpcomingTrips = ( { trips } ) => {
                     <Feed>
                     { upComing.map(trip => {
                             return (     
-                                <PastTripCard key={trip.id} name={trip.name} date={trip.date} img={trip.img}/>
+                                <TripCard setTripId={setTripId} trip={trip} key={trip.id} name={trip.name} date={trip.date} img={trip.img}/>
                             );
                         })}
                     </Feed>
@@ -42,7 +41,7 @@ const UpcomingTrips = ( { trips } ) => {
     } else {
         return (
            <div>
-               No past trips....
+               No upcoming trips....
            </div> 
 
         );

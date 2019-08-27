@@ -15,10 +15,10 @@ const BackButton = styled.button`
     width: 195px;
 `;
 
-const TripForm = ({ errors, touched, values, status }) => {
+const TripForm = ({ errors, touched, values, status, setTrips }) => {
+
 
     const [formStatus, setFormStatus] = useState(1);
-    console.log(values);
 
     const clickFunction = () => {
         setFormStatus(formStatus + 1);
@@ -70,7 +70,7 @@ const formikHOC = withFormik({
       name: name || '',
       date: date || '',
       base_cost: base_cost || '',
-      complete: 0
+      complete: false
     };
   },
   // this sets up form validation
@@ -83,9 +83,16 @@ const formikHOC = withFormik({
   handleSubmit(values, {props, setStatus, resetForm, setSubmitting }) {
     axios.post('https://tripsplitr.herokuapp.com/trips', values)
       .then(apiData => {
-        console.log('handle submit res: ', apiData);
-        setStatus(apiData.data);
         resetForm();
+
+         // get request needed here to re render the Trips.js component after the form has been submitted
+         axios.get('https://tripsplitr.herokuapp.com/trips')
+         .then(res => {
+             props.setTrips(res.data);
+         })
+         .catch(err => {
+             alert(err);
+         })
       })
       .catch(err => alert(err));
 
