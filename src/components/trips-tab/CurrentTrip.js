@@ -5,9 +5,10 @@ import { Route } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 
 import styled from 'styled-components';
-import { Card, Image, Icon, Button, Feed, Form } from 'semantic-ui-react';
+import { Card, Image, Icon, Button, Feed, Modal } from 'semantic-ui-react';
 
 import EditForm from './EditInfoForm.js';
+import DeleteTripModal from './DeleteTripModal.js';
 
 
 const Container = styled.div`
@@ -35,10 +36,13 @@ const ActiveTripContainer = styled.div`
     .info {
       margin-bottom: 25px;
     }
-`;
 
-// place holder until i can get state set up
-const currentTrip = false;
+    .ui.icon.close-button {
+      position: absolute;
+      right: 22px;
+      z-index: 1;
+    }
+`;
 
 // this is the component that will display when there is no active trip
 // TODO: styling
@@ -72,6 +76,7 @@ const ActiveTrip = ( { activeTrip } ) => {
       <ActiveTripContainer>
         <Feed.Event>
               <Feed.Content>
+              <DeleteTripModal />
                   <Card fluid>
                   <Image src={activeTrip.img} inline={true} />
                       <Card.Content>
