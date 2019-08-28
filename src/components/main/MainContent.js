@@ -22,7 +22,8 @@ const MainContent = ( { setCurrentTripName } ) => {
 
    // This useEffect will grab whatever trip object that the user has clicked on in the list and store that trips information in the active trip state
    useEffect(() => {
-      if(tripId) {
+     
+      if(tripId) {      
          axios.get(`https://tripsplitr.herokuapp.com/trips/${tripId}`)
             .then(res => {
                console.log('settingActiveTrip');
@@ -33,6 +34,7 @@ const MainContent = ( { setCurrentTripName } ) => {
                alert(err);
             })
          }
+         
       }, [tripId])
       
 
@@ -41,7 +43,7 @@ const MainContent = ( { setCurrentTripName } ) => {
    return (
     <>
     <Route exact path='/' component={Profile}/>
-    <Route path='/trips' render={(props) => <Trips {...props} setTripId={setTripId} activeTrip={activeTrip} setActiveTrip={setActiveTrip} />} />
+    <Route path='/trips' render={(props) => <Trips {...props} setCurrentTripName={setCurrentTripName} setTripId={setTripId} activeTrip={activeTrip} setActiveTrip={setActiveTrip} />} />
     <Route path='/people' component={People} />
     <Route path='/transactions' render={(props) => <Transactions {...props} activeTrip={activeTrip} />} />
     </>
