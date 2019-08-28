@@ -80,18 +80,4 @@ const Home = ({ setIsLoggedIn }) => {
   );
 };
 
-return (
-  <>
-    <FormContainer>
-      <Route path="/register/sign-up" component={SignUpForm} />
-      <Route
-        path="/register/login"
-        render={props => (
-          <LogInForm {...props} setCurrentUser={setCurrentUser} />
-        )}
-      />
-    </FormContainer>
-    <Route exact path="/register" component={Buttons} />
-  </>
-);
 export default Home;

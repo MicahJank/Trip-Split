@@ -44,6 +44,10 @@ const LogInForm = ({ errors, touched, values, status, history }) => {
           placeholder="Password"
         />
         <ErrorMessage name="password" component="div" />
+
+        <button className="ui button" type="submit">
+          Log In
+        </button>
       </Form>
       <NavLink to="/register">
         <BackButton className="ui basic teal button">
