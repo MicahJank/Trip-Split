@@ -93,7 +93,7 @@ const formikHOC = withFormik({
     password: Yup.string().required()
   }),
   // this sets ups submitting the form
-  handleSubmit(values, { setStatus, resetForm, setSubmitting }) {
+  handleSubmit(values, {props, setStatus, resetForm, setSubmitting }) {
     axios
       .post("https://tripsplitr.herokuapp.com/auth/register", values)
 

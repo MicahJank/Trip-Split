@@ -7,7 +7,7 @@ import { Route } from "react-router-dom";
 import styled from 'styled-components';
 import { Card, Feed } from 'semantic-ui-react';
 
-import PastTripCard from './PastTripCard.js';
+import TripCard from './TripCard.js';
 
 const CardDiv = styled.div`
     width: 80%;
@@ -15,26 +15,10 @@ const CardDiv = styled.div`
 `;
 
 
-const PastTrips = () => {
+const PastTrips = ( { trips, setTripId } ) => {
 
-    const [pastTrips, setPastTrips] = useState('');
-
-    useEffect(() => {
-        // the point of this axios call is to get the trips from the database, then once i have the trips i can filter out only those trips that
-        // have been completed, the completed trips then get assigned into pastTrips
-        axios.get('https://tripsplitr.herokuapp.com/trips')
-            .then(res => {
-                console.log(res);
-                const pastTripsArray = res.data.filter(trip => trip.complete === 1);
-                setPastTrips(pastTripsArray);
-                
-            })
-            .catch(err => {
-                alert(err);
-            });
-
-    }, []);
-
+    // for the past trips i will need to get the trips from the Trips.js and filter out any trips that have not been completed yet.
+    const pastTrips = trips.filter(trip => trip.complete);
 
     // this conditional checks if there are trips in the pastTrips array, if there is then it can render out the cards for the trips
     // if not then it should just display some text stating that there are no trips
@@ -48,7 +32,7 @@ const PastTrips = () => {
                     <Feed>
                     { pastTrips.map(trip => {
                             return (     
-                                <PastTripCard key={trip.id} name={trip.name} date={trip.date} img={trip.img}/>
+                                <TripCard setTripId={setTripId} trip={trip} key={trip.id} name={trip.name} date={trip.date} img={trip.img}/>
                             );
                         })}
                     </Feed>

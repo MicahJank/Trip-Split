@@ -7,6 +7,9 @@ import { Tab, Menu, Icon, Button } from "semantic-ui-react";
 
 const ButtonContainer = styled.div`
   display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 
   .buttons-group {
     width: 100%;
@@ -20,7 +23,7 @@ const ButtonContainer = styled.div`
 export default function NavTab() {
   return (
     <ButtonContainer>
-      <Button.Group widths="1" size="huge" compact className="buttons-group">
+      <Button.Group widths="1" size="large" compact className="buttons-group">
         <NavLink exact to={"/"} className="ui button">
           <Icon name="home" />
         </NavLink>

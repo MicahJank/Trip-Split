@@ -58,6 +58,7 @@ const Home = ({ setIsLoggedIn }) => {
   // this component is only rendered when the path is on '/'
   const Buttons = () => {
     return (
+<<<<<<< HEAD:trip-split/src/components/home/Home.js
       <ButtonContainer>
         <NavLink to={"/register/sign-up"}>
           <Button>Sign Up</Button>
@@ -66,6 +67,16 @@ const Home = ({ setIsLoggedIn }) => {
           <Button>Log In</Button>
         </NavLink>
       </ButtonContainer>
+=======
+        <>
+        <FormContainer>
+            {/* <Route path='/register/sign-up' component={SignUpForm} /> */}
+            <Route path='/register/sign-up' render={(props) => <SignUpForm {...props} myProp={'Hello'} /> }/>
+            <Route path='/register/login' component={LogInForm} />
+        </FormContainer>
+        <Route exact path='/register' component={Buttons} />
+        </>
+>>>>>>> master:src/components/home/Home.js
     );
   };
 

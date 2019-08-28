@@ -2,12 +2,12 @@ import React, { useState } from "react";
 
 import { Button } from 'semantic-ui-react';
 
-const Profile = () => {
+const Profile = ({history}) => {
 
     // clears the local storage and reloads the page
     const clearStorage = () => {
         localStorage.clear();
-        window.location.reload();
+        history.push('/');
     };
 
     return (
