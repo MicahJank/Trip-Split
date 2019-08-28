@@ -9,6 +9,8 @@ import { Segment } from 'semantic-ui-react';
 
 import CurrentTrip from './CurrentTrip.js';
 import PastTrips from './PastTrips.js';
+import UpcomingTrips from './UpcomingTrips.js';
+import CreateTrip from './CreateTrip.js';
 
 
 const Divide = styled.h4`
@@ -19,7 +21,7 @@ const Divide = styled.h4`
     padding: 10px;
 `;
 
-const Trips = () => {
+const Trips = ({history, setTripId, activeTrip}) => {
 
     const [trips, setTrips] = useState([]);
 
@@ -28,7 +30,8 @@ const Trips = () => {
         // have been completed, the completed trips then get assigned into pastTrips
         axios.get('https://tripsplitr.herokuapp.com/trips')
             .then(res => {
-                setTrips(res.data);          
+                setTrips(res.data);
+                console.log('trips api ran!');          
             })
             .catch(err => {
                 alert(err);
@@ -37,8 +40,10 @@ const Trips = () => {
 
     return (
         <>
-        <CurrentTrip trips={trips} />
-        <PastTrips trips={trips} />
+        <CurrentTrip setTrips={setTrips} trips={trips} activeTrip={activeTrip} />
+        <CreateTrip setTrips={setTrips} />
+        <UpcomingTrips setTripId={setTripId} trips={trips} />
+        <PastTrips setTripId={setTripId} trips={trips} />
         </>
     );
 };
