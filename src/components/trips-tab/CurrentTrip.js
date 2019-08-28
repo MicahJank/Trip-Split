@@ -59,7 +59,9 @@ const ActiveTrip = ( { activeTrip } ) => {
                       <Card.Content>
                           <Card.Header>{activeTrip.name}</Card.Header>
                           <Card.Meta>{activeTrip.date}</Card.Meta>
+                          <Button color='yellow' circular={true} floated='right' icon='edit' />
                       </Card.Content>
+                      
                   </Card>
               </Feed.Content>
           </Feed.Event>

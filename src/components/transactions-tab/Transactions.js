@@ -5,10 +5,11 @@ import { Route } from "react-router-dom";
 import styled from 'styled-components';
 
 
-const Transactions = () => {
+const Transactions = ( {activeTrip} ) => {
+    console.log(activeTrip);
 
     return (
-        <h2>Transactions</h2>
+        <h2>{activeTrip.base_cost}</h2>
     );
 };
 
