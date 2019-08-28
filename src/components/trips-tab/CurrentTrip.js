@@ -71,6 +71,7 @@ const ActiveTrip = ( { activeTrip } ) => {
                       <Card.Content>
                           <Card.Header>{activeTrip.name}</Card.Header>
                           <Card.Meta>{activeTrip.date}</Card.Meta>
+                          <Card.Header>{activeTrip.base_cost}</Card.Header>
                           <Button className='edit-button' onClick={toggleEditInfo} color='yellow' circular={true} floated='right' icon='edit' />
                           {editInfo ? <EditForm activeTrip={activeTrip} /> : null}
                       </Card.Content>

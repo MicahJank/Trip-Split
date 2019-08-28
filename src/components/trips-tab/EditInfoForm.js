@@ -82,7 +82,7 @@ const formikHOC = withFormik({
         //      alert(err);
         //  })
       })
-      .catch(err => alert(err));
+      .catch(err => console.log('Yup, you got an error. Good job.', err));
   }
 });
 
