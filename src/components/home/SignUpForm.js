@@ -86,7 +86,7 @@ const formikHOC = withFormik({
       .post('https://tripsplitr.herokuapp.com/auth/register', values)
      
       .then(apiData => {
-        console.log('res: ', apiData);
+        // console.log('res: ', apiData);
         setStatus(apiData);
         resetForm();
       })
