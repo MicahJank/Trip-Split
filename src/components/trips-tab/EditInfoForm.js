@@ -22,7 +22,7 @@ const FormContainer = styled.div`
     left: 5px;
     width: 250px;
 
-    .ui.form.mini {
+    .ui.form.large {
         display: flex;
         align-items: center;
     }
@@ -36,11 +36,13 @@ const EditInfoForm = ({ errors, touched, values, status }) => {
  
     return (
         <FormContainer>
-        <Form className='ui form mini'>
+        <Form className='ui form large'>
             <div>
             <Field  type="text" name="name" placeholder="Name" />
 
             <Field  type="date" name="date" placeholder="Date" />
+
+            <Field  type="text" name="base_cost" placeholder="Cost" />
             </div>
             <div className='submit-button'>
                 <button className="ui button positive" type="submit">Submit</button>
@@ -52,10 +54,11 @@ const EditInfoForm = ({ errors, touched, values, status }) => {
 
 const formikHOC = withFormik({
   // this sets up setting the values of the inputs
-  mapPropsToValues({ name, date }) {
+  mapPropsToValues({ name, date, base_cost }) {
     return {
       name: name || '',
-      date: date || ''
+      date: date || '',
+      base_cost: base_cost || ''
     };
   },
   // this sets up form validation
@@ -63,6 +66,9 @@ const formikHOC = withFormik({
     name: Yup.string().required(),
     date: Yup
         .string()
+        .required(),
+    base_cost: Yup
+        .number()
         .required()
   }),
   // this sets ups submitting the form

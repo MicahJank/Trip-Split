@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import { Route } from 'react-router-dom';
 
+import NumberFormat from 'react-number-format';
+
 import styled from 'styled-components';
 import { Card, Image, Icon, Button, Feed, Form } from 'semantic-ui-react';
 
@@ -28,6 +30,10 @@ const ActiveTripContainer = styled.div`
       position: absolute;
       bottom: 10px;
       right: 10px;
+    }
+
+    .info {
+      margin-bottom: 25px;
     }
 `;
 
@@ -69,13 +75,12 @@ const ActiveTrip = ( { activeTrip } ) => {
                   <Card fluid>
                   <Image src={activeTrip.img} inline={true} />
                       <Card.Content>
-                          <Card.Header>{activeTrip.name}</Card.Header>
-                          <Card.Meta>{activeTrip.date}</Card.Meta>
-                          <Card.Header>{activeTrip.base_cost}</Card.Header>
+                          <Card.Header className='info'>{activeTrip.name}</Card.Header>
+                          <Card.Meta className='info'>{activeTrip.date}</Card.Meta>
+                          <NumberFormat className='info' value={activeTrip.base_cost} displayType={'text'} thousandSeparator={true} decimalSeparator={'.'} prefix={'$'} />
                           <Button className='edit-button' onClick={toggleEditInfo} color='yellow' circular={true} floated='right' icon='edit' />
                           {editInfo ? <EditForm activeTrip={activeTrip} /> : null}
-                      </Card.Content>
-                      
+                      </Card.Content>  
                   </Card>
               </Feed.Content>
           </Feed.Event>
