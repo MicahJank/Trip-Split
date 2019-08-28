@@ -20,46 +20,35 @@ const HomeContainer = styled.div`
 
 `;
 
-const HomeTab = () => {
-    return (
-        <Row className='top-row' fluid header='Header'>
-            <h1>Trips</h1>
-            <h3>CurrentTrip</h3>
-        </Row>
-        );
-};
-
-const TripsTab = () => {
-    return (
-        <Row className='top-row' fluid header='Header'>
-            <h1>Trips</h1>
-            <h3>CurrentTrip</h3>
-        </Row>
-        );
-};
-
-const PeopleTab = () => {
-    return (
-        <Row className='top-row' fluid header='Header'>
-            <h1>People</h1>
-            <h3>CurrentTrip</h3>
-        </Row>
-        );
-};
-
-const TransactionsTab = () => {
-    return (
-        <Row className='top-row' fluid header='Header'>
-            <h1>Transactions</h1>
-            <h3>CurrentTrip</h3>
-        </Row>
-        );
-};
-
-
-
-// Routing is set up in here so that whenever the route is at the specified path, then the different components (which have been defined above) will render.
-const TopRow = ( ) => {
+// Routing is set up in here so that whenever the route is at the specified path, then the different components (which have been defined below) will render.
+const TopRow = ( { currentTripName } ) => {
+    
+    const TripsTab = () => {
+        return (
+            <Row className='top-row' fluid header='Header'>
+                <h1>Trips</h1>
+                {currentTripName ? <h3>{`Trip Name: ${currentTripName}`}</h3> : <h3>No Current Trip</h3>}
+            </Row>
+            );
+    };
+    
+    const PeopleTab = () => {
+        return (
+            <Row className='top-row' fluid header='Header'>
+                <h1>People</h1>
+                {currentTripName ? <h3>{`Trip Name: ${currentTripName}`}</h3> : <h3>No Current Trip</h3>}
+            </Row>
+            );
+    };
+    
+    const TransactionsTab = () => {
+        return (
+            <Row className='top-row' fluid header='Header'>
+                <h1>Transactions</h1>
+                {currentTripName ? <h3>{`Trip Name: ${currentTripName}`}</h3> : <h3>No Current Trip</h3>}
+            </Row>
+            );
+    };
 
     return (
         <>
