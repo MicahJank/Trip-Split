@@ -72,7 +72,8 @@ const Home = ( { setIsLoggedIn } ) => {
     return (
         <>
         <FormContainer>
-            <Route path='/register/sign-up' component={SignUpForm} />
+            {/* <Route path='/register/sign-up' component={SignUpForm} /> */}
+            <Route path='/register/sign-up' render={(props) => <SignUpForm {...props} myProp={'Hello'} /> }/>
             <Route path='/register/login' component={LogInForm} />
         </FormContainer>
         <Route exact path='/register' component={Buttons} />

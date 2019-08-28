@@ -16,9 +16,13 @@ const MainContainer = styled.div`
   align-items: stretch;
 
   .top,
-  .main,
-  .nav {
+  .main {
     flex-shrink: 0;
+  }
+
+  .nav {
+    position: absolute;
+    bottom: 0;
   }
 `;
 
@@ -27,11 +31,13 @@ const Main = styled.div`
 `;
 
 const WebApp = () => {
+  const [currentTripName, setCurrentTripName] = useState("");
+
   return (
     <MainContainer>
-      <TopRow className="top" />
+      <TopRow className="top" currentTripName={currentTripName} />
       <Main className="main">
-        <MainContent />
+        <MainContent setCurrentTripName={setCurrentTripName} />
       </Main>
       <NavTab className="nav" />
     </MainContainer>
