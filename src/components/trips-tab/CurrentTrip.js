@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 
 import styled from 'styled-components';
-import { Card, Image, Icon, Button, Feed } from 'semantic-ui-react';
+import { Card, Image, Icon, Button, Feed, Form } from 'semantic-ui-react';
 
-import TripModal from './TripModal.js';
+import EditForm from './EditInfoForm.js';
 
 
 const Container = styled.div`
@@ -23,6 +23,12 @@ const Container = styled.div`
 
 const ActiveTripContainer = styled.div`
     margin: 25px;
+
+    .edit-button {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
 `;
 
 // place holder until i can get state set up
@@ -50,6 +56,12 @@ const NoCurrentTrip = () => {
 // NOTE: 'trips' property is coming from Trips.js originally
 const ActiveTrip = ( { activeTrip } ) => {
 
+  const [editInfo, setEditInfo] = useState(false);
+
+  const toggleEditInfo = () => {
+    setEditInfo(!editInfo);
+  }
+
     return (
       <ActiveTripContainer>
         <Feed.Event>
@@ -59,7 +71,8 @@ const ActiveTrip = ( { activeTrip } ) => {
                       <Card.Content>
                           <Card.Header>{activeTrip.name}</Card.Header>
                           <Card.Meta>{activeTrip.date}</Card.Meta>
-                          <Button color='yellow' circular={true} floated='right' icon='edit' />
+                          <Button className='edit-button' onClick={toggleEditInfo} color='yellow' circular={true} floated='right' icon='edit' />
+                          {editInfo ? <EditForm activeTrip={activeTrip} /> : null}
                       </Card.Content>
                       
                   </Card>
