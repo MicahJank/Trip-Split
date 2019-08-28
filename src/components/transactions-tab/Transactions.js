@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
-import { Button, Container, List, Segment } from "semantic-ui-react";
+import { Button, Container, Card } from "semantic-ui-react";
 import styled from "styled-components";
 
 const Transactions = () => {
@@ -54,27 +54,41 @@ const Transactions = () => {
       {/* Top Bar */}
       <Button fluid>End Trip</Button>
       {/* ExpenseList */}
-      <Segment inverted>
-        <List divided inverted relaxed>
-          <List.Item>
-            <List.Content>
-              <List.Header>Uber to Lunch</List.Header>
-              An excellent companion
-            </List.Content>
-          </List.Item>
-          <List.Item>
-            <List.Content>
-              <List.Header>Poodle</List.Header>A poodle, its pretty basic
-            </List.Content>
-          </List.Item>
-          <List.Item>
-            <List.Content>
-              <List.Header>Paulo</List.Header>
-              He's also a dog
-            </List.Content>
-          </List.Item>
-        </List>
-      </Segment>
+
+      <Card.Group>
+        <Card>
+          <Card.Content>
+            <Card.Header>Matthew Harris</Card.Header>
+            <Card.Meta>Co-Worker</Card.Meta>
+            <Card.Description>
+              Matthew is a pianist living in Nashville.
+            </Card.Description>
+          </Card.Content>
+        </Card>
+
+        <Card>
+          <Card.Content>
+            <Card.Header content="Jake Smith" />
+            <Card.Meta content="Musicians" />
+            <Card.Description content="Jake is a drummer living in New York." />
+          </Card.Content>
+        </Card>
+
+        <Card>
+          <Card.Content
+            header="Elliot Baker"
+            meta="Friend"
+            description="Elliot is a music producer living in Chicago."
+          />
+        </Card>
+
+        <Card
+          header="Jenny Hess"
+          meta="Friend"
+          description="Jenny is a student studying Media Management at the New School"
+        />
+      </Card.Group>
+
       {/* NewTransactionButton */}
     </div>
   );
