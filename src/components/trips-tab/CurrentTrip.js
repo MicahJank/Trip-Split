@@ -64,7 +64,7 @@ const NoCurrentTrip = () => {
 
 // This is the component that will display when there is an active trip
 // NOTE: 'trips' property is coming from Trips.js originally
-const ActiveTrip = ( { activeTrip } ) => {
+const ActiveTrip = ( { activeTrip, setTrips, setActiveTrip } ) => {
 
   const [editInfo, setEditInfo] = useState(false);
 
@@ -76,7 +76,7 @@ const ActiveTrip = ( { activeTrip } ) => {
       <ActiveTripContainer>
         <Feed.Event>
               <Feed.Content>
-              <DeleteTripModal />
+              <DeleteTripModal setActiveTrip={setActiveTrip} activeTrip={activeTrip} setTrips={setTrips} />
                   <Card fluid>
                   <Image src={activeTrip.img} inline={true} />
                       <Card.Content>
@@ -93,9 +93,9 @@ const ActiveTrip = ( { activeTrip } ) => {
     );
   };
 
-const CurrentTrip = ( { trips, setTrips, activeTrip } ) => {
+const CurrentTrip = ( { trips, setTrips, activeTrip, setActiveTrip } ) => {
   if (activeTrip.id) {
-    return <ActiveTrip activeTrip={activeTrip} />;
+    return <ActiveTrip setActiveTrip={setActiveTrip} setTrips={setTrips} activeTrip={activeTrip} />;
   } else {
     return <NoCurrentTrip setTrips={setTrips} />;
   }
