@@ -3,7 +3,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { List, Button, Icon } from 'semantic-ui-react'
 
+import { Link } from "react-router-dom";
+
 import ListItem from './ListItem.js';
+import PeopleModal from './PeopleModal.js';
 
 
 const AddPerson = styled.div`
@@ -22,7 +25,7 @@ const PeopleList = ( { peopleOnTrip } ) => {
         })}
     </List>
     <AddPerson>
-        <Button circular={true} size={'massive'} icon={'add user'} />
+        <PeopleModal />
     </AddPerson>
     </>
     );
