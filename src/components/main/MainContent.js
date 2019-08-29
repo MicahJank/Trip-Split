@@ -59,6 +59,11 @@ const MainContent = ( { setCurrentTripName } ) => {
       const shuffle = (array) => {
          return array.sort(() => Math.random() - 0.5);
        }
+
+      // when this function gets called the person who is passed in will get added to the array of people on the trip
+       const updatePeople = (person) => {
+         setPeopleOnTrip([...peopleOnTrip, person]);
+       };
       
 
 
