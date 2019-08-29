@@ -42,7 +42,7 @@ const MainContent = ( { setCurrentTripName } ) => {
     <Route exact path='/' component={Profile}/>
     <Route path='/trips' render={(props) => <Trips {...props} setTripId={setTripId} activeTrip={activeTrip} />} />
     <Route path='/people' component={People} />
-    <Route path='/transactions' component={Transactions} />
+    <Route path='/transactions' render={(props) => <Transactions {...props} activeTrip={activeTrip}/>}/>
     </>
    );
 };
