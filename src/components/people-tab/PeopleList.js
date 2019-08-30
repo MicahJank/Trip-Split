@@ -15,7 +15,7 @@ const AddPerson = styled.div`
     bottom: 60px;
 `;
 
-const PeopleList = ( { peopleOnTrip } ) => {
+const PeopleList = ( { peopleOnTrip, updatePeople } ) => {
 
     return (
     <>
@@ -25,7 +25,7 @@ const PeopleList = ( { peopleOnTrip } ) => {
         })}
     </List>
     <AddPerson>
-        <PeopleModal />
+        <PeopleModal updatePeople={updatePeople} />
     </AddPerson>
     </>
     );

@@ -84,23 +84,9 @@ const formikHOC = withFormik({
   }),
   // this sets ups submitting the form
   handleSubmit(values, {props, setStatus, resetForm, setSubmitting }) {
-    // axios.post('https://tripsplitr.herokuapp.com/trips', values)
-    //   .then(apiData => {
-    //     setStatus(apiData.data);
-    //     resetForm();
-
-    //      // get request needed here to re render the Trips.js component after the form has been submitted
-    //      axios.get('https://tripsplitr.herokuapp.com/trips')
-    //      .then(res => {
-    //          props.setTrips(res.data);
-    //      })
-    //      .catch(err => {
-    //          alert(err);
-    //      })
-    //   })
-    //   .catch(err => alert(err));
-
-      props.toggleModal();
+    // console.log(values);
+    props.updatePeople(values);
+    props.toggleModal();
   }
 });
 

@@ -52,7 +52,7 @@ const Container = styled.div`
     }
 `;
 
-const PeopleModal = ({setTrips}) => {
+const PeopleModal = ({setTrips, updatePeople}) => {
 
     const [closeModal, setCloseModal] = useState(false);
  
@@ -66,7 +66,7 @@ const PeopleModal = ({setTrips}) => {
             <Modal.Header>Please Fill in the Information</Modal.Header>
             <Modal.Content className='myClass'>
                 <Container>
-                    <PersonForm toggleModal={toggleModal} />
+                    <PersonForm updatePeople={updatePeople} toggleModal={toggleModal} />
                 </Container>
             </Modal.Content>
         </Modal>

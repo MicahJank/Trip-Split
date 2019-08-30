@@ -41,7 +41,7 @@ const MainContent = ( { setCurrentTripName } ) => {
          axios.get(`https://tripsplitr.herokuapp.com/users`)
             .then(res => {
                   const randomUsers = shuffle(res.data).slice(0,randomNumber());
-                  // console.log(randomUsers);
+                  console.log(randomUsers);
                   setPeopleOnTrip(randomUsers);
                })
             .catch(err => {
@@ -72,7 +72,7 @@ const MainContent = ( { setCurrentTripName } ) => {
     <>
     <Route exact path='/' component={Profile}/>
     <Route path='/trips' render={(props) => <Trips {...props} setCurrentTripName={setCurrentTripName} setTripId={setTripId} activeTrip={activeTrip} setActiveTrip={setActiveTrip} />} />
-    <Route path='/people' render={(props) => <People {...props} activeTrip={activeTrip} peopleOnTrip={peopleOnTrip} />} />
+    <Route path='/people' render={(props) => <People {...props} activeTrip={activeTrip} peopleOnTrip={peopleOnTrip} updatePeople={updatePeople} />} />
     <Route path='/transactions' render={(props) => <Transactions {...props} activeTrip={activeTrip} />} />
     </>
    );
