@@ -5,7 +5,9 @@ import { Route, NavLink } from 'react-router-dom';
 import SignUpForm from './SignUpForm.js';
 import LogInForm from './LogInForm.js';
 
-import { Button, Divider, Grid, Segment, Form } from 'semantic-ui-react';
+import logo from './imgs/TripSplit-Logo.png';
+
+import { Button, Divider, Grid, Segment, Image } from 'semantic-ui-react';
 
 import styled from 'styled-components';
 
@@ -17,6 +19,8 @@ const FormContainer = styled.div`
     position: absolute;
     top: 30%;
     left: 30%;
+    background: #f9fafb;
+   
 
     form.ui.form {
         width: 100%;
@@ -48,6 +52,7 @@ const ButtonContainer = styled.div`
     justify-content: center;
     width: 100%;
     height: 100%;
+    background: #f9fafb;
 
     .error {
         color: red;
@@ -58,6 +63,42 @@ const ButtonContainer = styled.div`
         margin-top: 10px;
 
     }
+
+    .segment {
+        height: 100%;
+    }
+
+    .ui.horizontal.divider {
+        :before {
+            background-color: #f9fafb;
+        }
+        
+    }
+    img.logo {
+        align-self: flex-start;
+        background: white;
+        margin-bottom: 30px;
+        box-shadow: 1px 22px 31px -41px rgba(0,0,0,0.75);
+    }
+
+    h1 {
+        font-weight: 600;
+        font-size: 2rem;
+        text-align:center;
+        margin-bottom: 50px;
+        color: #71cfc4;
+    }
+`;
+
+const SignUpMain = styled.div`
+    background-color:  #f9fafb;
+    width: 100%;
+    height: 100%;
+
+    .sign-in {
+        height: 100%;
+        background-color: #f9fafb;
+    }
 `;
 // setCurrentUser is passed down as a prop on the login form since that is where it will be needed
 const Home = ( { setIsLoggedIn, history } ) => {
@@ -65,27 +106,26 @@ const Home = ( { setIsLoggedIn, history } ) => {
     // this component is only rendered when the path is on '/'
     const Buttons = () => {
 
-        console.log()
+        console.log();
 
         return (
             <>
-            {/* <ButtonContainer>
-                <NavLink to={'/register/sign-up'}><Button>Sign Up</Button></NavLink>
-                <NavLink to={'/register/login'}><Button>Log In</Button></NavLink>
-            </ButtonContainer> */}
-            <ButtonContainer>
-             <Segment padded='very' vertical={true} placeholder>
-             <Grid relaxed='very' stackable>
-               <Grid.Column>
-                 <LogInForm history={history} />
-               </Grid.Column>
-               </Grid>
-               <Divider horizontal>Or</Divider>
-            <Grid>
-               <Grid.Column verticalAlign='middle'>
-               <NavLink to={'/register/sign-up'}><Button color='olive' size='big'>Sign Up</Button></NavLink>
-               </Grid.Column>
-             </Grid>
+            <ButtonContainer> 
+            <Segment padded='very' vertical={true} placeholder>
+
+            <Image circular={true} verticalAlign='top' className='logo' centered={true} size='small' src={logo} /> 
+            <h1>Welcome to TripSplit</h1>  
+                <Grid relaxed='very' stackable>
+                    <Grid.Column>
+                        <LogInForm history={history} />
+                    </Grid.Column>
+                </Grid>
+                <Divider className='myDivider' horizontal>Or</Divider>
+                <Grid>
+                    <Grid.Column verticalAlign='middle'>
+                        <NavLink to={'/register/sign-up'}><Button color='olive' size='big'>Sign Up</Button></NavLink>
+                    </Grid.Column>
+                </Grid>
            </Segment>
            </ButtonContainer>
            </>
@@ -94,11 +134,15 @@ const Home = ( { setIsLoggedIn, history } ) => {
 
     return (
         <>
-        <FormContainer>
-            {/* <Route path='/register/sign-up' component={SignUpForm} /> */}
-            <Route path='/register/sign-up' render={(props) => <SignUpForm {...props} myProp={'Hello'} /> }/>
-        </FormContainer>
-        <Route exact path='/register' component={Buttons} />
+        <SignUpMain>
+            <FormContainer>
+                {/* <Route path='/register/sign-up' component={SignUpForm} /> */}
+                <Route path='/register/sign-up' render={(props) => <SignUpForm {...props} myProp={'Hello'} /> }/>
+            </FormContainer>
+            <div className='sign-in'>
+                <Route exact path='/register' component={Buttons} />
+            </div>
+        </SignUpMain>
         </>
     );
 };
