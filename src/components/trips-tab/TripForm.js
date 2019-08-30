@@ -57,7 +57,7 @@ const TripForm = ({ errors, touched, values, status, setTrips }) => {
                 <>
             <Form className="ui form">
                 <Field className="field" type="text" name="base_cost" placeholder="What is the base cost?"/>
-                <button className="ui button" type="submit">Log In</button> 
+                <button className="ui button" type="submit">Create Trip</button> 
             </Form>
             </>
             );

@@ -21,7 +21,7 @@ const Divide = styled.h4`
     padding: 10px;
 `;
 
-const Trips = ({history, setTripId, activeTrip, setActiveTrip}) => {
+const Trips = ({history, setTripId, activeTrip, setActiveTrip, setCurrentTripName, setPeopleOnTrip}) => {
 
     const [trips, setTrips] = useState([]);
 
@@ -40,7 +40,7 @@ const Trips = ({history, setTripId, activeTrip, setActiveTrip}) => {
 
     return (
         <>
-        <CurrentTrip setActiveTrip={setActiveTrip} setTripId={setTripId} setTrips={setTrips} trips={trips} activeTrip={activeTrip} />
+        <CurrentTrip setCurrentTripName={setCurrentTripName} setActiveTrip={setActiveTrip} setTripId={setTripId} setTrips={setTrips} trips={trips} activeTrip={activeTrip} setPeopleOnTrip={setPeopleOnTrip} />
         <CreateTrip setTrips={setTrips} />
         <UpcomingTrips setTripId={setTripId} trips={trips} />
         <PastTrips setTripId={setTripId} trips={trips} />
