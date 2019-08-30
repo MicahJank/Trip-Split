@@ -15,13 +15,13 @@ const AddPerson = styled.div`
     bottom: 60px;
 `;
 
-const PeopleList = ( { peopleOnTrip, updatePeople } ) => {
+const PeopleList = ( { peopleOnTrip, updatePeople, deletePerson } ) => {
 
     return (
     <>
     <List size={'massive'} divided relaxed>
         {peopleOnTrip.map(person => {
-            return (<ListItem key={person.id} person={person} />)
+            return (<ListItem key={person.id} person={person} deletePerson={deletePerson} />)
         })}
     </List>
     <AddPerson>

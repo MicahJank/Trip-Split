@@ -3,6 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { List, Button, Icon } from 'semantic-ui-react'
 
+import DeletePersonModal from './DeletePersonModal.js';
+
 const CloseButton = styled.div`
     position: absolute;
     right: 0;
@@ -12,12 +14,16 @@ const CloseButton = styled.div`
     }
 `;
 
-const ListItem = ( { person } ) => {
+const ListItem = ( { person, deletePerson } ) => {
+
+  const clickHandler = () => {
+    deletePerson(person);
+  };
 
     return (
         <List.Item>
           <CloseButton>
-            <Icon color='red' className='trash-icon' size='small' name='trash' />
+            <DeletePersonModal person={person} deletePerson={deletePerson}  />
           </CloseButton>
           <List.Icon name='user' size='large' verticalAlign='middle' />
           <List.Content>

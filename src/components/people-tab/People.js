@@ -5,10 +5,10 @@ import styled from 'styled-components';
 import PeopleList from './PeopleList.js';
 
 
-const People = ( { peopleOnTrip, updatePeople } ) => {   
+const People = ( { peopleOnTrip, updatePeople, deletePerson } ) => {   
 
     return (
-        peopleOnTrip.length ? <PeopleList peopleOnTrip={peopleOnTrip} updatePeople={updatePeople} /> : <h3>There doesn't seem to be any people on this trip...</h3> 
+        peopleOnTrip.length ? <PeopleList peopleOnTrip={peopleOnTrip} updatePeople={updatePeople} deletePerson={deletePerson} /> : <h3>There doesn't seem to be any people on this trip...</h3> 
         
     );
 };
