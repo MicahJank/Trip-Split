@@ -64,6 +64,15 @@ const MainContent = ( { setCurrentTripName } ) => {
        const updatePeople = (person) => {
          setPeopleOnTrip([...peopleOnTrip, person]);
        };
+
+       // deletePeople will take in a person object and will loop over the people on the trip, when it finds the person in the array that matches the passed in person, it
+       // will take that person out of the array and then set the setPeopleOnTrip state to the new array.
+       const deletePeople = (person) => {
+         const newPeopleArray = peopleOnTrip.filter(personOnTrip => {
+           return personOnTrip !== person;
+         });
+         setPeopleOnTrip(newPeopleArray);
+       };
       
 
 
@@ -73,7 +82,7 @@ const MainContent = ( { setCurrentTripName } ) => {
     <Route exact path='/' component={Profile}/>
     <Route path='/trips' render={(props) => <Trips {...props} setCurrentTripName={setCurrentTripName} setTripId={setTripId} activeTrip={activeTrip} setActiveTrip={setActiveTrip} setPeopleOnTrip={setPeopleOnTrip} />} />
     <Route path='/people' render={(props) => <People {...props} activeTrip={activeTrip} peopleOnTrip={peopleOnTrip} updatePeople={updatePeople} />} />
-    <Route path='/transactions' render={(props) => <Transactions {...props} activeTrip={activeTrip} />} />
+    <Route path='/transactions' render={(props) => <Transactions {...props} activeTrip={activeTrip} peopleOnTrip={peopleOnTrip} />} />
     </>
    );
 };
