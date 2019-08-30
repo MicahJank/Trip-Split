@@ -7,11 +7,8 @@ const CloseButton = styled.div`
     position: absolute;
     right: 0;
 
-    .ui.icon.button.close-btn {
-      padding: 3px 5px
-      i {
-        font-size: 0.7rem;
-      }
+    .trash-icon {
+      cursor: pointer;
     }
 `;
 
@@ -20,8 +17,8 @@ const ListItem = ( { person } ) => {
     return (
         <List.Item>
           <CloseButton>
-            <button className='close-btn ui icon negative button'><Icon name={'close'} /></button>
-            </CloseButton>
+            <Icon color='red' className='trash-icon' size='small' name='trash' />
+          </CloseButton>
           <List.Icon name='user' size='large' verticalAlign='middle' />
           <List.Content>
             <List.Header>{person.name}</List.Header>
