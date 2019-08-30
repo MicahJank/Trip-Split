@@ -57,7 +57,7 @@ const TripForm = ({ errors, touched, values, status, setTrips }) => {
                 <>
             <Form className="ui form">
                 <Field className="field" type="text" name="base_cost" placeholder="What is the base cost?"/>
-                <button className="ui button" type="submit">Log In</button> 
+                <button className="ui button" type="submit">Create Trip</button> 
             </Form>
             </>
             );
@@ -83,13 +83,14 @@ const formikHOC = withFormik({
     name: Yup.string().required(),
     base_cost: Yup.string().required(),
     date: Yup
-        .number()
+        .string()
         .required()
   }),
   // this sets ups submitting the form
   handleSubmit(values, {props, setStatus, resetForm, setSubmitting }) {
     axios.post('https://tripsplitr.herokuapp.com/trips', values)
       .then(apiData => {
+        setStatus(apiData.data);
         resetForm();
 
          // get request needed here to re render the Trips.js component after the form has been submitted

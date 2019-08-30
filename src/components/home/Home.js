@@ -5,7 +5,7 @@ import { Route, NavLink } from 'react-router-dom';
 import SignUpForm from './SignUpForm.js';
 import LogInForm from './LogInForm.js';
 
-import { Button } from 'semantic-ui-react';
+import { Button, Divider, Grid, Segment, Form } from 'semantic-ui-react';
 
 import styled from 'styled-components';
 
@@ -44,10 +44,14 @@ const FormContainer = styled.div`
 const ButtonContainer = styled.div`
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 50%;
-    left: 35%;
-    
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    .error {
+        color: red;
+    }
 
     .ui.button {
         width: 150px;
@@ -56,16 +60,35 @@ const ButtonContainer = styled.div`
     }
 `;
 // setCurrentUser is passed down as a prop on the login form since that is where it will be needed
-const Home = ( { setIsLoggedIn } ) => {
+const Home = ( { setIsLoggedIn, history } ) => {
 
     // this component is only rendered when the path is on '/'
     const Buttons = () => {
 
+        console.log()
+
         return (
-            <ButtonContainer>
+            <>
+            {/* <ButtonContainer>
                 <NavLink to={'/register/sign-up'}><Button>Sign Up</Button></NavLink>
                 <NavLink to={'/register/login'}><Button>Log In</Button></NavLink>
-            </ButtonContainer>
+            </ButtonContainer> */}
+            <ButtonContainer>
+             <Segment padded='very' vertical={true} placeholder>
+             <Grid relaxed='very' stackable>
+               <Grid.Column>
+                 <LogInForm history={history} />
+               </Grid.Column>
+               </Grid>
+               <Divider horizontal>Or</Divider>
+            <Grid>
+               <Grid.Column verticalAlign='middle'>
+               <NavLink to={'/register/sign-up'}><Button color='olive' size='big'>Sign Up</Button></NavLink>
+               </Grid.Column>
+             </Grid>
+           </Segment>
+           </ButtonContainer>
+           </>
         );
     };
 
@@ -74,7 +97,6 @@ const Home = ( { setIsLoggedIn } ) => {
         <FormContainer>
             {/* <Route path='/register/sign-up' component={SignUpForm} /> */}
             <Route path='/register/sign-up' render={(props) => <SignUpForm {...props} myProp={'Hello'} /> }/>
-            <Route path='/register/login' component={LogInForm} />
         </FormContainer>
         <Route exact path='/register' component={Buttons} />
         </>

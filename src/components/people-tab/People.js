@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-
-import { Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 
 import styled from 'styled-components';
 
+import PeopleList from './PeopleList.js';
 
-const People = () => {
+
+const People = ( { peopleOnTrip, updatePeople, deletePerson } ) => {   
 
     return (
-        <h2>People</h2>
+        peopleOnTrip.length ? <PeopleList peopleOnTrip={peopleOnTrip} updatePeople={updatePeople} deletePerson={deletePerson} /> : <h3>There doesn't seem to be any people on this trip...</h3> 
+        
     );
 };
 
