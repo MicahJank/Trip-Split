@@ -11,11 +11,7 @@ const ButtonDiv = styled.div `
   color: palevioletred;
 `;
 
-const ButtonEnd = styled.div `
-color: red;
-`;
 
-//dummy data below
 const Transactions = ({activeTrip, tripId}) => { 
   const [expenseData, setExpenseData] = useState(0);
   

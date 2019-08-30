@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import { Route, NavLink } from "react-router-dom";
+import { Route, NavLink } from 'react-router-dom';
 
-import SignUpForm from "./SignUpForm.js";
-import LogInForm from "./LogInForm.js";
+import SignUpForm from './SignUpForm.js';
+import LogInForm from './LogInForm.js';
 
-import { Button } from "semantic-ui-react";
+import { Button, Divider, Grid, Segment, Form } from 'semantic-ui-react';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const FormContainer = styled.div`
     display flex;
@@ -42,45 +42,61 @@ const FormContainer = styled.div`
 `;
 
 const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 50%;
-  left: 35%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 
-  .ui.button {
-    width: 150px;
-    margin-top: 10px;
-  }
+    .error {
+        color: red;
+    }
+
+    .ui.button {
+        width: 150px;
+        margin-top: 10px;
+
+    }
 `;
 // setCurrentUser is passed down as a prop on the login form since that is where it will be needed
-const Home = ({ setIsLoggedIn }) => {
-  // this component is only rendered when the path is on '/'
-  const Buttons = () => {
-    return (
-      <>
-        <FormContainer>
-          {/* <Route path='/register/sign-up' component={SignUpForm} /> */}
-          <Route
-            path="/register/sign-up"
-            render={props => <SignUpForm {...props} myProp={"Hello"} />}
-          />
-          <Route path="/register/login" component={LogInForm} />
-        </FormContainer>
-        <Route exact path="/register" component={Buttons} />
-      </>
-    );
-  };
+const Home = ( { setIsLoggedIn, history } ) => {
 
-  return (
-    <>
-      <FormContainer>
-        <Route path="/register/sign-up" component={SignUpForm} />
-        <Route path="/register/login" component={LogInForm} />
-      </FormContainer>
-      <Route exact path="/register" component={Buttons} />
-    </>
-  );
+    // this component is only rendered when the path is on '/'
+    const Buttons = () => {
+
+        console.log();
+
+        return (
+            <>
+            <ButtonContainer>
+             <Segment padded='very' vertical={true} placeholder>
+             <Grid relaxed='very' stackable>
+               <Grid.Column>
+                 <LogInForm history={history} />
+               </Grid.Column>
+               </Grid>
+               <Divider horizontal>Or</Divider>
+            <Grid>
+               <Grid.Column verticalAlign='middle'>
+               <NavLink to={'/register/sign-up'}><Button color='olive' size='big'>Sign Up</Button></NavLink>
+               </Grid.Column>
+             </Grid>
+           </Segment>
+           </ButtonContainer>
+           </>
+        );
+    };
+
+    return (
+        <>
+        <FormContainer>
+            {/* <Route path='/register/sign-up' component={SignUpForm} /> */}
+            <Route path='/register/sign-up' render={(props) => <SignUpForm {...props} myProp={'Hello'} /> }/>
+        </FormContainer>
+        <Route exact path='/register' component={Buttons} />
+        </>
+    );
 };
 
 export default Home;

@@ -25,6 +25,7 @@ const MainContent = ( { setCurrentTripName } ) => {
       if(tripId) {
          axios.get(`https://tripsplitr.herokuapp.com/trips/${tripId}`)
             .then(res => {
+               console.log('settingActiveTrip');
                setActiveTrip(res.data);
                setCurrentTripName(res.data.name);
             })
@@ -40,7 +41,7 @@ const MainContent = ( { setCurrentTripName } ) => {
    return (
     <>
     <Route exact path='/' component={Profile}/>
-    <Route path='/trips' render={(props) => <Trips {...props} setTripId={setTripId} activeTrip={activeTrip} />} />
+    <Route path='/trips' render={(props) => <Trips {...props} setTripId={setTripId} activeTrip={activeTrip} setActiveTrip={setActiveTrip} />} />
     <Route path='/people' component={People} />
     <Route path='/transactions' render={(props) => <Transactions {...props} tripId={tripId} activeTrip={activeTrip}/>}/>
     </>

@@ -28,33 +28,41 @@ const LogInForm = ({ errors, touched, values, status, history }) => {
   }, [status]);
   return (
     <>
-      <Form className="ui form">
-        <Field
-          className="field"
-          type="text"
-          name="username"
-          placeholder="UserName"
-        />
-        <ErrorMessage name="username" component="div" />
+    <Form className="ui form">
+      <div className='field'>
+        <div className='ui left icon input'>
+          <Field
+            type="text"
+            name="username"
+            placeholder="UserName"
+          />
+          <i aria-hidden="true" className="user icon"></i> 
+        </div>
+        <ErrorMessage className='error' name="username" component="div" />
+      </div>
+      
+      
+      <div className='field'>
+        <div className='ui left icon input'>
+          <Field
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
+          <i aria-hidden="true" className="lock icon"></i>
+        </div>
+        <ErrorMessage className='error' name="password" component="div" />
+      </div>
+      
 
-        <Field
-          className="field"
-          type="password"
-          name="password"
-          placeholder="Password"
-        />
-        <ErrorMessage name="password" component="div" />
+      <button className="ui button primary" type="submit">
+        Log In
+      </button>
 
-        <button className="ui button" type="submit">
-          Log In
-        </button>
-      </Form>
-      <NavLink to="/register">
-        <BackButton className="ui basic teal button">
-          <Icon name="angle left" />
-          Back
-        </BackButton>
-      </NavLink>
+    </Form>
+    {/* <NavLink to='/register'>
+        <BackButton className='ui basic teal button'><Icon name='angle left'/>Back</BackButton>
+    </NavLink> */}
     </>
   );
 };
