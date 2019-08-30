@@ -9,7 +9,7 @@ import { Button, Header, Image, Modal } from 'semantic-ui-react';
 import TripForm from './TripForm.js';
 
 
-const DeleteTripModal = ({setTrips, activeTrip, setActiveTrip, setCurrentTripName}) => {
+const DeleteTripModal = ({setTrips, activeTrip, setActiveTrip, setCurrentTripName, setPeopleOnTrip}) => {
 
     const [closeModal, setCloseModal] = useState(false);
     
@@ -22,6 +22,7 @@ const DeleteTripModal = ({setTrips, activeTrip, setActiveTrip, setCurrentTripNam
                     console.log('Deleted Trip');
                     setActiveTrip({});
                     setCurrentTripName('');
+                    setPeopleOnTrip([]);
                        // get request needed here to re render the Trips.js component after the current trip has been deleted
                         axios.get('https://tripsplitr.herokuapp.com/trips')
                         .then(res => {
