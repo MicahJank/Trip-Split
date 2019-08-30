@@ -2,76 +2,62 @@ import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import { Button, Container, Card } from "semantic-ui-react";
 import styled from "styled-components";
+import axios from "axios";
 
 const ButtonDiv = styled.div `
   position:fixed;
   right: 30px;
   bottom: 60px;
+  color: palevioletred;
 `;
 
-const Transactions = ({activeTrip}) => {
-  const [expenseData, setExpenseData] = useState([
-    {
-      expense_name: "Dinner in Italy",
-      total_expense_price: 3000,
-      primary_paid: "Mario",
-      trip_id: 0
-    },
-    {
-      expense_name: "Plane tickets to Italy",
-      total_expense_price: 9500,
-      primary_paid: "Mario",
-      trip_id: 0
-    },
-    {
-      expense_name: "Dinner in Spain",
-      total_expense_price: 5000,
-      primary_paid: "Luigi",
-      trip_id: 1
-    },
-    {
-      expense_name: "Plane tickets to Spain",
-      total_expense_price: 10000,
-      primary_paid: "Luigi",
-      trip_id: 1
-    },
-    {
-      expense_name: "Dinner in France",
-      total_expense_price: 8000,
-      primary_paid: "Bowser",
-      trip_id: 2
-    },
-    {
-      expense_name: "Plane tickets to France",
-      total_expense_price: 16000,
-      primary_paid: "Bowser",
-      trip_id: 2
-    }
-  ]);
+const ButtonEnd = styled.div `
+color: red;
+`;
+
+//dummy data below
+const Transactions = ({activeTrip, tripId}) => { 
+  const [expenseData, setExpenseData] = useState(0);
   
   const [sumExpense, setSumExpense] = useState(0);
 
   let sum = [];
 
-  let something = expenseData => {
-    expenseData.map(expense => {
-      sum.push(expense.total_expense_price);
-    });
-    somethingElse();
-  };
-  let somethingElse = () => {
-    let finalSum = 0;
-    for (let i = 0; i < sum.length; i++) {
-      finalSum += sum[i];
-    }
-    setSumExpense(finalSum);
-  };
+  // let something = expenseData => {
+  //   expenseData.map(expense => {
+  //     sum.push(expense.total_expense_price);
+  //   });
+  //   somethingElse();
+  // };
+  // let somethingElse = () => {
+  //   let finalSum = 0;
+  //   for (let i = 0; i < sum.length; i++) {
+  //     finalSum += sum[i];
+  //   }
+  //   setSumExpense(finalSum);
+  // };
   
-  
+  //
+  const retriveTrips =()=>{
+    //Api call, passing in tripId as the parameter
+    //The parameter is passed in as props from MainContent.js
+    axios.get(`https://tripsplitr.herokuapp.com/trips/${tripId}`)
+    //This is a promise that is resolved with .then and .catch
+    .then(res=>{
+      //setting api success response to state
+      setExpenseData(res.data.base_cost) 
+    })
+
+    .catch(err=>{
+      console.log(err)
+    })
+
+  };
 
   useEffect(() => {
     // get data from backend
-    something(expenseData);
+    // something(expenseData);
+    retriveTrips()
   }, []);
   
 
@@ -80,11 +66,16 @@ const Transactions = ({activeTrip}) => {
       
       {/* <div>{"$" + sumExpense.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</div> */}
     <h2> 
-      {activeTrip.base_cost}
+       {expenseData} 
     </h2>
 
+    
+
       {/* Top Bar */}
-      <Button fluid>End Trip</Button>
+      
+      <Button fluid color= "yellow">End Trip</Button>
+      
+      
       {/* ExpenseList */}
 
       <Card.Group>
@@ -152,7 +143,7 @@ const Transactions = ({activeTrip}) => {
 
 const ButtonExampleCircular = () => 
 <ButtonDiv>
-<Button circular icon='money' size= "huge" floated= ""/>
+<Button circular icon='money' size= "huge" floated= "" color= "blue" />
    </ButtonDiv>
 
 

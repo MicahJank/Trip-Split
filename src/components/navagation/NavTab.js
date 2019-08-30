@@ -10,6 +10,7 @@ const ButtonContainer = styled.div`
   position: fixed;
   bottom: 0;
   width: 100%;
+  
 
   .buttons-group {
     width: 100%;
