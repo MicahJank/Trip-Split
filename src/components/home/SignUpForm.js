@@ -14,6 +14,13 @@ const BackButton = styled.button`
     width: 195px;
 `;
 
+const FormFields = styled.div`
+  
+  .ui.left.icon.input i{
+    height: 42px;
+  }
+`;
+
 const SignUpForm = ({ errors, touched, values, status }) => {
 
   useEffect(() => {
@@ -30,29 +37,39 @@ const SignUpForm = ({ errors, touched, values, status }) => {
   return (
     <>
     <Form className="ui form">
-      <Field className="field" type="text" name="name" placeholder="Name" />
-      <ErrorMessage name="name" component="div" />
+      <FormFields>
+        <div className='ui left icon input'>
+          <Field className="field" type="text" name="name" placeholder="Name" />
+          <i aria-hidden="true" className="user icon"></i> 
+        </div>
+        <ErrorMessage name="name" component="div" />
+      </FormFields>
 
-      <Field
-        className="field"
-        type="text"
-        name="username"
-        placeholder="UserName"
-      />
+      <FormFields>
+      <div className='ui left icon input'>
+        <Field className="field" type="text" name="username" placeholder="UserName" />
+        <i aria-hidden="true" className="user icon"></i> 
+      </div>
       <ErrorMessage name="username" component="div" />
+      </FormFields>
 
-      <Field className="field" type="email" name="email" placeholder="Email" />
-      <ErrorMessage name="email" component="div" />
-
-      <Field
-        className="field"
-        type="password"
-        name="password"
-        placeholder="Password"
-      />
+      <FormFields>
+        <div className='ui left icon input'>
+          <Field className="field" type="email" name="email" placeholder="Email" />
+          <Icon name='mail' />
+        </div>
+        <ErrorMessage name="email" component="div" />
+      </FormFields>
+    
+    <FormFields>
+      <div className='ui left icon input'>
+        <Field type="password" className="field" name="password" placeholder="Password" />
+        <i aria-hidden="true" className="lock icon"></i> 
+      </div>
       <ErrorMessage name="password" component="div" />
+    </FormFields>
 
-      <button className="ui button" type="submit">
+      <button className="ui button primary" type="submit">
         Register
       </button>
     </Form>
