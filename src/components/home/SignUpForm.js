@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import { Route, NavLink } from 'react-router-dom';
 
+import { Tween } from 'react-gsap';
+
 import axios from 'axios';
 import { Form, Field, withFormik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -36,6 +38,8 @@ const SignUpForm = ({ errors, touched, values, status }) => {
   
   return (
     <>
+    <Tween from={{ x: '300px'}} duration={0.5}>
+    <div>
     <Form className="ui form">
       <FormFields>
         <div className='ui left icon input'>
@@ -76,6 +80,8 @@ const SignUpForm = ({ errors, touched, values, status }) => {
         <NavLink to='/register'>
         <BackButton className='ui basic teal button'><Icon name='angle left'/>Back</BackButton>
     </NavLink>
+    </div>
+    </Tween>
     </>
   );
 };

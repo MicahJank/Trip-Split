@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import { Route, NavLink } from 'react-router-dom';
 
@@ -6,6 +6,8 @@ import SignUpForm from './SignUpForm.js';
 import LogInForm from './LogInForm.js';
 
 import logo from './imgs/TripSplit-Logo.png';
+
+import { Tween } from 'react-gsap';
 
 import { Button, Divider, Grid, Segment, Image } from 'semantic-ui-react';
 
@@ -53,6 +55,7 @@ const ButtonContainer = styled.div`
     width: 100%;
     height: 100%;
     background: #f9fafb;
+    overflow: hidden;
 
     .error {
         color: red;
@@ -94,6 +97,7 @@ const SignUpMain = styled.div`
     background-color:  #f9fafb;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 
     .sign-in {
         height: 100%;
@@ -103,46 +107,49 @@ const SignUpMain = styled.div`
 // setCurrentUser is passed down as a prop on the login form since that is where it will be needed
 const Home = ( { setIsLoggedIn, history } ) => {
 
+  
+
     // this component is only rendered when the path is on '/'
     const Buttons = () => {
 
-        console.log();
-
         return (
             <>
-            <ButtonContainer> 
-            <Segment padded='very' vertical={true} placeholder>
+            <Tween from={{ y: '100px', opacity: 0}} duration={2} >
+                <ButtonContainer> 
+                <Segment padded='very' vertical={true} placeholder>
 
-            <Image circular={true} verticalAlign='top' className='logo' centered={true} size='small' src={logo} /> 
-            <h1>Welcome to TripSplit</h1>  
-                <Grid relaxed='very' stackable>
-                    <Grid.Column>
-                        <LogInForm history={history} />
-                    </Grid.Column>
-                </Grid>
-                <Divider className='myDivider' horizontal>Or</Divider>
-                <Grid>
-                    <Grid.Column verticalAlign='middle'>
-                        <NavLink to={'/register/sign-up'}><Button color='olive' size='big'>Sign Up</Button></NavLink>
-                    </Grid.Column>
-                </Grid>
-           </Segment>
-           </ButtonContainer>
+                <Image circular={true} verticalAlign='top' className='logo' centered={true} size='small' src={logo} /> 
+                <h1>Welcome to TripSplit</h1>  
+                    <Grid relaxed='very' stackable>
+                        <Grid.Column>
+                            <LogInForm history={history} />
+                        </Grid.Column>
+                    </Grid>
+                    <Divider className='myDivider' horizontal>Or</Divider>
+                    <Grid>
+                        <Grid.Column verticalAlign='middle'>
+                            <NavLink to={'/register/sign-up'}><Button color='olive' size='big'>Sign Up</Button></NavLink>
+                        </Grid.Column>
+                    </Grid>
+            </Segment>
+            </ButtonContainer>
+           </Tween>
            </>
         );
     };
 
     return (
         <>
+      
         <SignUpMain>
             <FormContainer>
-                {/* <Route path='/register/sign-up' component={SignUpForm} /> */}
                 <Route path='/register/sign-up' render={(props) => <SignUpForm {...props} myProp={'Hello'} /> }/>
             </FormContainer>
             <div className='sign-in'>
-                <Route exact path='/register' component={Buttons} />
+                <Route exact path='/register' render={(props) => <Buttons {...props} />} />
             </div>
         </SignUpMain>
+  
         </>
     );
 };
