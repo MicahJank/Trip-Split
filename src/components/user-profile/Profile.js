@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import axios from 'axios';
 
 import { Button, Image, Icon, Menu } from 'semantic-ui-react';
 
@@ -31,6 +33,18 @@ const Container = styled.div`
 
 const Profile = ({history}) => {
 
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        axios.get(`https://tripsplitr.herokuapp.com/users/${localStorage.getItem('currentUserId')}`)
+            .then(res => {
+               setUser(res.data);
+            })
+            .catch(err => {
+                alert(err);
+            })
+    }, []);
+
     // clears the local storage and reloads the page
     const clearStorage = () => {
         localStorage.clear();
@@ -40,7 +54,7 @@ const Profile = ({history}) => {
     return (
         <Container>
             <Icon color='grey' name='user' circular={true} />
-            <h1>Users Name</h1>
+            <h1>{user.name}</h1>
             <Button.Group size='large' className='settings' vertical>
                 <Button className='tab' content='Settings' />
                 <Button className='tab' content='User Preferences' />
