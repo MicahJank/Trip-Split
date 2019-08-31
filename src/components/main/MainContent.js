@@ -10,7 +10,6 @@ import Trips from '../trips-tab/Trips.js';
 import People from '../people-tab/People.js';
 import Transactions from '../transactions-tab/Transactions.js';
 import Profile from '../user-profile/Profile.js';
-import CurrentTrip from '../trips-tab/CurrentTrip.js';
 
 
 const MainContent = ( { setCurrentTripName } ) => {
