@@ -10,12 +10,21 @@ const ButtonContainer = styled.div`
   position: fixed;
   bottom: 0;
   width: 100%;
-  
+  border-radius: 0;
 
   .buttons-group {
     width: 100%;
 
     a {
+      border-radius: 0;
+    }
+  }
+
+  .ui.buttons .button {
+    :first-child{
+      border-radius: 0;
+    }
+    :last-child {
       border-radius: 0;
     }
   }
@@ -25,7 +34,7 @@ const ButtonContainer = styled.div`
 
     return (
     <ButtonContainer>
-      <Button.Group widths='1' size='large' compact className='buttons-group'>
+      <Button.Group color='green' widths='1' size='large' compact className='buttons-group'>
         <NavLink exact to={'/'} className='ui button'><Icon name='home' /></NavLink>
         <NavLink to={'/trips'} className='ui button'><Icon name='car' />Trips</NavLink>
         <NavLink to={'/people'} className='ui button'><Icon name='users' />People</NavLink>
