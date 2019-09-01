@@ -54,7 +54,7 @@ const NoCurrentTrip = () => {
                 <Icon size='big' color='yellow' name='warning circle'/>
                 <Card.Header textAlign='center'>You don't have an active trip yet!</Card.Header>
                 <Card.Description textAlign='center'>
-                Select a trip below or click Create New Trip to get started.
+                Select a trip below or click the Create New Trip button to get started.
                 </Card.Description>
             </Card.Content>
         </Card>
