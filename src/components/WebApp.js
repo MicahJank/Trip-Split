@@ -10,7 +10,6 @@ import TopRow from "./top-row/TopRow.js";
 import MainContent from "./main/MainContent.js";
 
 const MainContainer = styled.div`
-<<<<<<< HEAD
     min-height: 100%;
     display: flex;
     flex-direction: column;
@@ -27,22 +26,6 @@ const MainContainer = styled.div`
         max-width: 800px;
     }
 
-=======
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-
-  .top,
-  .main {
-    flex-shrink: 0;
-  }
-
-  .nav {
-    position: absolute;
-    bottom: 0;
-  }
->>>>>>> origin
 `;
 
 const Main = styled.div`
