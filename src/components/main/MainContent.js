@@ -82,7 +82,7 @@ const MainContent = ( { setCurrentTripName } ) => {
     <Route exact path='/' component={Profile}/>
     <Route path='/trips' render={(props) => <Trips {...props} setCurrentTripName={setCurrentTripName} setTripId={setTripId} activeTrip={activeTrip} setActiveTrip={setActiveTrip} setPeopleOnTrip={setPeopleOnTrip} />} />
     <Route path='/people' render={(props) => <People {...props} activeTrip={activeTrip} peopleOnTrip={peopleOnTrip} updatePeople={updatePeople} deletePerson={deletePerson} />} />
-    <Route path='/transactions' render={(props) => <Transactions {...props} activeTrip={activeTrip} peopleOnTrip={peopleOnTrip} />} />
+    <Route path='/transactions' render={(props) => <Transactions {...props} activeTrip={activeTrip} peopleOnTrip={peopleOnTrip} tripId={tripId} />} />
     </>
    );
 };

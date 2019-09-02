@@ -65,14 +65,10 @@ const Home = ( { setIsLoggedIn, history } ) => {
     // this component is only rendered when the path is on '/'
     const Buttons = () => {
 
-        console.log()
+        console.log();
 
         return (
             <>
-            {/* <ButtonContainer>
-                <NavLink to={'/register/sign-up'}><Button>Sign Up</Button></NavLink>
-                <NavLink to={'/register/login'}><Button>Log In</Button></NavLink>
-            </ButtonContainer> */}
             <ButtonContainer>
              <Segment padded='very' vertical={true} placeholder>
              <Grid relaxed='very' stackable>
