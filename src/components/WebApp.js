@@ -15,14 +15,16 @@ const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    max-width: 800px;
+    margin: auto;
 
     .top, .main {
         flex-shrink: 0;
     }
 
     .nav {
-        position: absolute;
-        bottom: 0;
+        width: 100%;
+        max-width: 800px;
     }
 
 `;

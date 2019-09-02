@@ -21,12 +21,12 @@ const ButtonContainer = styled.div`
     .icon.car {
         position: absolute;
         bottom: 23px;
-        right: 20px;
+        right: 23px;
     }
 
     .icon.plus {
         position: absolute;
-        right: 15px;
+        right: 10px;
         bottom: 35px;
 
     }
