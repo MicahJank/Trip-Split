@@ -12,28 +12,12 @@ const ButtonDiv = styled.div `
 `;
 
 
-const Transactions = ({activeTrip, tripId}) => { 
+const Transactions = ({activeTrip, tripId, peopleOnTrip}) => { 
   const [expenseData, setExpenseData] = useState(0);
-  
+  console.log (peopleOnTrip)
   const [sumExpense, setSumExpense] = useState(0);
-
   let sum = [];
 
-  // let something = expenseData => {
-  //   expenseData.map(expense => {
-  //     sum.push(expense.total_expense_price);
-  //   });
-  //   somethingElse();
-  // };
-  // let somethingElse = () => {
-  //   let finalSum = 0;
-  //   for (let i = 0; i < sum.length; i++) {
-  //     finalSum += sum[i];
-  //   }
-  //   setSumExpense(finalSum);
-  // };
-  
-  //
   const retriveTrips =()=>{
     //Api call, passing in tripId as the parameter
     //The parameter is passed in as props from MainContent.js
@@ -56,13 +40,15 @@ const Transactions = ({activeTrip, tripId}) => {
     retriveTrips()
   }, []);
   
+if(activeTrip.name){
+
 
   return (
     <div>
       
       {/* <div>{"$" + sumExpense.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</div> */}
     <h2> 
-       {expenseData} 
+       {activeTrip.base_cost} 
     </h2>
 
     
@@ -73,59 +59,21 @@ const Transactions = ({activeTrip, tripId}) => {
       
       
       {/* ExpenseList */}
+{peopleOnTrip.map(person=>{
 
-      <Card.Group>
-        <Card fluid>
-          <Card.Content>
-            <Card.Header>Matthew Harris</Card.Header>
-            <Card.Meta>Co-Worker</Card.Meta>
-            <Card.Description>
-              Matthew is a pianist living in Nashville.
-            </Card.Description>
-          </Card.Content>
-        </Card>
-
-        <Card fluid>
-          <Card.Content>
-            <Card.Header content="Jake Smith" />
-            <Card.Meta content="Musicians" />
-            <Card.Description content="Jake is a drummer living in New York." />
-          </Card.Content>
-        </Card>
-
-        <Card fluid>
-          <Card.Content
-            header="Elliot Baker"
-            meta="Friend"
-            description="Elliot is a music producer living in Chicago."
-          />
-        </Card>
-
-        <Card fluid
-          header="Jenny Hess"
-          meta="Friend"
-          description="Jenny is a student studying Media Management at the New School"
-        />
-
-        <Card fluid>
-          <Card.Content
-            header="Terry Jones"
-            meta="Brother"
-            description="Terry is a engineer living in Nashville who enjoys playing guitar"
-          />
-        </Card>
-
-        <Card fluid>
-          <Card.Content
-            header="Terry Jones"
-            meta="Brother"
-            description="Terry is a engineer living in Nashville who enjoys playing guitar"
-          />
-        </Card>
+  return (
+  <Card fluid>
+            <Card.Content
+              header= {person.name}
+              meta={person.username}
+              description="eque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur"
+            />
+          </Card>
+  )
+  })}
       
-}
 
-      </Card.Group>
+
 
       {/* NewTransactionButton */}
       
@@ -135,6 +83,14 @@ const Transactions = ({activeTrip, tripId}) => {
       
     </div>
   );
+} else {
+  return (
+    <div>
+noactiveTrip
+
+    </div>
+  )
+}
 };
 
 const ButtonExampleCircular = () => 
