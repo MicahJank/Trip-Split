@@ -62,7 +62,7 @@ const PeopleModal = ({setTrips, updatePeople}) => {
     };
 
     return (
-        <Modal className='people-form' centered={false} size={'large'} open={closeModal} trigger={<Button onClick={toggleModal} circular={true} size={'massive'} icon={'add user'}></Button>}>
+        <Modal className='people-form' centered={false} size={'large'} open={closeModal} trigger={<Button onClick={toggleModal} primary circular={true} size={'massive'} icon={'add user'}></Button>}>
             <Modal.Header>Please Fill in the Information</Modal.Header>
             <Modal.Content className='myClass'>
                 <Container>

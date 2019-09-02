@@ -23,6 +23,8 @@ const TripForm = ({ errors, touched, values, status, setTrips }) => {
 
     const [formStatus, setFormStatus] = useState(1);
 
+    const [randomImg, setRandomImg] = useState('');
+
     const clickFunction = () => {
         setFormStatus(formStatus + 1);
     };
@@ -70,12 +72,14 @@ const TripForm = ({ errors, touched, values, status, setTrips }) => {
 
 const formikHOC = withFormik({
   // this sets up setting the values of the inputs
-  mapPropsToValues({ name, date, base_cost, complete }) {
+  mapPropsToValues({ name, date, base_cost, complete, img }) {
+
     return {
       name: name || '',
       date: date || '',
       base_cost: base_cost || '',
-      complete: false
+      complete: false,
+      img: ''
     };
   },
   // this sets up form validation
@@ -88,21 +92,31 @@ const formikHOC = withFormik({
   }),
   // this sets ups submitting the form
   handleSubmit(values, {props, setStatus, resetForm, setSubmitting }) {
-    axios.post('https://tripsplitr.herokuapp.com/trips', values)
-      .then(apiData => {
-        setStatus(apiData.data);
-        resetForm();
+      // axios call to the unsplash api to get a random picture for the trip that is associated with the trip keyword
+    axios.get(`https://api.unsplash.com/photos/random/?client_id=a4c7f6830199882e91cbcde976d12951c3fd50e553706ac25555fec5ed030050&query=trips`)
+        .then(res => {
+            values.img = res.data.urls.small;
 
-         // get request needed here to re render the Trips.js component after the form has been submitted
-         axios.get('https://tripsplitr.herokuapp.com/trips')
-         .then(res => {
-             props.setTrips(res.data);
-         })
-         .catch(err => {
-             alert(err);
-         })
-      })
-      .catch(err => alert(err));
+            axios.post('https://tripsplitr.herokuapp.com/trips', values)
+            .then(apiData => {
+              setStatus(apiData.data);
+              resetForm();
+      
+               // get request needed here to re render the Trips.js component after the form has been submitted
+               axios.get('https://tripsplitr.herokuapp.com/trips')
+               .then(res => {
+                   props.setTrips(res.data);
+               })
+               .catch(err => {
+                   alert(err);
+               })
+            })
+            .catch(err => alert(err));
+
+        })
+        .catch(err => {
+            alert(err);
+        })
 
       props.toggleModal();
   }

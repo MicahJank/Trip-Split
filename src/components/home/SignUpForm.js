@@ -2,6 +2,14 @@ import React, { useState, useEffect } from "react";
 
 import { Route, NavLink } from "react-router-dom";
 
+<<<<<<< HEAD
+import { Tween } from 'react-gsap';
+
+import axios from 'axios';
+import { Form, Field, withFormik, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { Button, Checkbox, Form as SemanticForm, Icon } from 'semantic-ui-react';
+=======
 import axios from "axios";
 import { Form, Field, withFormik, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -11,12 +19,20 @@ import {
   Form as SemanticForm,
   Icon
 } from "semantic-ui-react";
+>>>>>>> origin
 
 import styled from "styled-components";
 
 const BackButton = styled.button`
   margin-top: 20px;
   width: 195px;
+`;
+
+const FormFields = styled.div`
+  
+  .ui.left.icon.input i{
+    height: 42px;
+  }
 `;
 
 const SignUpForm = ({ errors, touched, values, status }) => {
@@ -33,6 +49,52 @@ const SignUpForm = ({ errors, touched, values, status }) => {
 
   return (
     <>
+<<<<<<< HEAD
+    <Tween from={{ x: '300px'}} duration={0.5}>
+    <div>
+    <Form className="ui form">
+      <FormFields>
+        <div className='ui left icon input'>
+          <Field className="field" type="text" name="name" placeholder="Name" />
+          <i aria-hidden="true" className="user icon"></i> 
+        </div>
+        <ErrorMessage name="name" component="div" />
+      </FormFields>
+
+      <FormFields>
+      <div className='ui left icon input'>
+        <Field className="field" type="text" name="username" placeholder="UserName" />
+        <i aria-hidden="true" className="user icon"></i> 
+      </div>
+      <ErrorMessage name="username" component="div" />
+      </FormFields>
+
+      <FormFields>
+        <div className='ui left icon input'>
+          <Field className="field" type="email" name="email" placeholder="Email" />
+          <Icon name='mail' />
+        </div>
+        <ErrorMessage name="email" component="div" />
+      </FormFields>
+    
+    <FormFields>
+      <div className='ui left icon input'>
+        <Field type="password" className="field" name="password" placeholder="Password" />
+        <i aria-hidden="true" className="lock icon"></i> 
+      </div>
+      <ErrorMessage name="password" component="div" />
+    </FormFields>
+
+      <button className="ui button primary" type="submit">
+        Register
+      </button>
+    </Form>
+        <NavLink to='/register'>
+        <BackButton className='ui basic teal button'><Icon name='angle left'/>Back</BackButton>
+    </NavLink>
+    </div>
+    </Tween>
+=======
       <Form className="ui form">
         <Field className="field" type="text" name="name" placeholder="Name" />
         <ErrorMessage name="name" component="div" />
@@ -71,6 +133,7 @@ const SignUpForm = ({ errors, touched, values, status }) => {
           Back
         </BackButton>
       </NavLink>
+>>>>>>> origin
     </>
   );
 };

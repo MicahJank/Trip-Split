@@ -1,8 +1,18 @@
+<<<<<<< HEAD
+import React, { useState } from 'react';
+
+
+
+import { Route, Redirect } from 'react-router-dom';
+
+
+=======
 import React, { useState } from "react";
 
 import { Route, Redirect } from "react-router-dom";
 import WebApp from "./components/WebApp";
 import "./App.css";
+>>>>>>> origin
 
 // components
 import Home from "./components/home/Home.js";

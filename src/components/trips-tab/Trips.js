@@ -31,7 +31,7 @@ const Trips = ({history, setTripId, activeTrip, setActiveTrip, setCurrentTripNam
         axios.get('https://tripsplitr.herokuapp.com/trips')
             .then(res => {
                 setTrips(res.data);
-                console.log('trips api ran!');          
+                console.log('trips api ran!', res.data);          
             })
             .catch(err => {
                 alert(err);
