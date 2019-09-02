@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Route, NavLink } from "react-router-dom";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 import { Tab, Menu, Icon, Button } from "semantic-ui-react";
 
 const ButtonContainer = styled.div`
@@ -30,18 +30,35 @@ const ButtonContainer = styled.div`
     }
   }
 `;
-  
-  export default function NavTab() {
 
-    return (
+export default function NavTab() {
+  return (
     <ButtonContainer>
+<<<<<<< HEAD
       <Button.Group color='green' widths='1' size='large' compact className='buttons-group'>
         <NavLink exact to={'/'} className='ui button'><Icon name='home' /></NavLink>
         <NavLink to={'/trips'} className='ui button'><Icon name='car' />Trips</NavLink>
         <NavLink to={'/people'} className='ui button'><Icon name='users' />People</NavLink>
         <NavLink to={'/transactions'} className='ui button'><Icon name='money' />Transactions</NavLink>
+=======
+      <Button.Group widths="1" size="large" compact className="buttons-group">
+        <NavLink exact to={"/"} className="ui button">
+          <Icon name="home" />
+        </NavLink>
+        <NavLink to={"/trips"} className="ui button">
+          <Icon name="car" />
+          Trips
+        </NavLink>
+        <NavLink to={"/people"} className="ui button">
+          <Icon name="users" />
+          People
+        </NavLink>
+        <NavLink to={"/transactions"} className="ui button">
+          <Icon name="money" />
+          Transactions
+        </NavLink>
+>>>>>>> origin
       </Button.Group>
     </ButtonContainer>
-    );
- 
-};
+  );
+}

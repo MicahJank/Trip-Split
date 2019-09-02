@@ -112,6 +112,7 @@ const Home = ( { setIsLoggedIn, history } ) => {
     // this component is only rendered when the path is on '/'
     const Buttons = () => {
 
+<<<<<<< HEAD
         return (
             <>
             <Tween from={{ y: '100px', opacity: 0}} duration={2} >
@@ -134,6 +135,27 @@ const Home = ( { setIsLoggedIn, history } ) => {
             </Segment>
             </ButtonContainer>
            </Tween>
+=======
+        console.log();
+
+        return (
+            <>
+            <ButtonContainer>
+             <Segment padded='very' vertical={true} placeholder>
+             <Grid relaxed='very' stackable>
+               <Grid.Column>
+                 <LogInForm history={history} />
+               </Grid.Column>
+               </Grid>
+               <Divider horizontal>Or</Divider>
+            <Grid>
+               <Grid.Column verticalAlign='middle'>
+               <NavLink to={'/register/sign-up'}><Button color='olive' size='big'>Sign Up</Button></NavLink>
+               </Grid.Column>
+             </Grid>
+           </Segment>
+           </ButtonContainer>
+>>>>>>> origin
            </>
         );
     };

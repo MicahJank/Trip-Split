@@ -1,19 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink } from "react-router-dom";
 
+<<<<<<< HEAD
 import { Tween } from 'react-gsap';
 
 import axios from 'axios';
 import { Form, Field, withFormik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Button, Checkbox, Form as SemanticForm, Icon } from 'semantic-ui-react';
+=======
+import axios from "axios";
+import { Form, Field, withFormik, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import {
+  Button,
+  Checkbox,
+  Form as SemanticForm,
+  Icon
+} from "semantic-ui-react";
+>>>>>>> origin
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const BackButton = styled.button`
-    margin-top: 20px;
-    width: 195px;
+  margin-top: 20px;
+  width: 195px;
 `;
 
 const FormFields = styled.div`
@@ -24,20 +36,20 @@ const FormFields = styled.div`
 `;
 
 const SignUpForm = ({ errors, touched, values, status }) => {
-
   useEffect(() => {
     axios
-      .get('https://tripsplitr.herokuapp.com/users')
+      .get("https://tripsplitr.herokuapp.com/users")
       .then(res => {
-        console.log('res: ', res);
+        console.log("res: ", res);
       })
       .catch(err => {
         alert(err);
       });
   }, [status]);
-  
+
   return (
     <>
+<<<<<<< HEAD
     <Tween from={{ x: '300px'}} duration={0.5}>
     <div>
     <Form className="ui form">
@@ -82,6 +94,46 @@ const SignUpForm = ({ errors, touched, values, status }) => {
     </NavLink>
     </div>
     </Tween>
+=======
+      <Form className="ui form">
+        <Field className="field" type="text" name="name" placeholder="Name" />
+        <ErrorMessage name="name" component="div" />
+
+        <Field
+          className="field"
+          type="text"
+          name="username"
+          placeholder="UserName"
+        />
+        <ErrorMessage name="username" component="div" />
+
+        <Field
+          className="field"
+          type="email"
+          name="email"
+          placeholder="Email"
+        />
+        <ErrorMessage name="email" component="div" />
+
+        <Field
+          className="field"
+          type="password"
+          name="password"
+          placeholder="Password"
+        />
+        <ErrorMessage name="password" component="div" />
+
+        <button className="ui button" type="submit">
+          Register
+        </button>
+      </Form>
+      <NavLink to="/register">
+        <BackButton className="ui basic teal button">
+          <Icon name="angle left" />
+          Back
+        </BackButton>
+      </NavLink>
+>>>>>>> origin
     </>
   );
 };
@@ -90,10 +142,10 @@ const formikHOC = withFormik({
   // this sets up setting the values of the inputs
   mapPropsToValues({ name, username, email, password }) {
     return {
-      name: name || '',
-      username: username || '',
-      email: email || '',
-      password: password || ''
+      name: name || "",
+      username: username || "",
+      email: email || "",
+      password: password || ""
     };
   },
   // this sets up form validation
@@ -106,8 +158,8 @@ const formikHOC = withFormik({
   // this sets ups submitting the form
   handleSubmit(values, {props, setStatus, resetForm, setSubmitting }) {
     axios
-      .post('https://tripsplitr.herokuapp.com/auth/register', values)
-     
+      .post("https://tripsplitr.herokuapp.com/auth/register", values)
+
       .then(apiData => {
         // console.log('res: ', apiData);
         setStatus(apiData);
